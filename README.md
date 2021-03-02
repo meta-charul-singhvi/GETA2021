@@ -1,6 +1,6 @@
-#GETA2021
+# GETA2021
 
-##Implementation of Shopping Cart
+## Implementation of Shopping Cart
 
 Creating a Shopping Cart Class Using Object-Oriented Programming in JAVA
 
