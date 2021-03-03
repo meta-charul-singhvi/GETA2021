@@ -1,3 +1,7 @@
+/* @author : Charul Singhvi
+*  @date : 03/03/2021
+*/
+
 package lcm_hcf;
 import java.util.Scanner;
 public class LCM_HCF {
