@@ -74,4 +74,5 @@ public class LCM_HCF {
 		
 		scan.close();
 	}
+
 }
