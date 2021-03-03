@@ -1,3 +1,7 @@
+/* @author : Charul Singhvi
+*  @date : 03/03/2021
+*/
+
 package nQueen;
 import java.util.Scanner;
 public class N_Queens {
