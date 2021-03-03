@@ -1,7 +1,9 @@
-//	@author: Charul Singhvi
-//	Last date of Updating Code: 02-03-2021
-//	Shop.java : Main Class
-//	Uses this class to perform action according to user's demand.
+/*
+ * @author: Charul Singhvi
+ * @date : 03-03-201
+ * Shop.java : Main Class
+ * Uses this class to perform action according to user's demand.
+ */
 
 package shop;
 
@@ -38,7 +40,9 @@ public class Shop
 				
 				usersChoice = scan.nextInt();
 			  
-				//Validating user's input
+				/*
+				 * Validating user's input
+				 */
 				while(usersChoice>6 || usersChoice<=0){
 					System.out.println("Oops! You entered a wrong choice. Please re-enter a valid choice : ");
 					usersChoice = scan.nextInt();
@@ -46,17 +50,23 @@ public class Shop
 			  
 				
 				switch (usersChoice) {
-				//calling functions for adding items to cart
+				/*
+				 * calling functions for adding items to cart
+				 */
 				case 1:
 					
 					System.out.print ("Enter the name of the item: ");
 					itemName = scan.next();
-					//Null checks
+					/*
+					 * Null checks
+					 */
 					while(itemName == null || itemName.isEmpty()){
 						System.out.println("Please enter some Name of the item!");
 					}
 					
-					//check if new item entered already exists in cart
+					/*
+					 * check if new item entered already exists in cart
+					 */
 					if (!shoppingCart.checkItemInCartByName(itemName)){
 						System.out.print("Enter the unit price: ");
 						
@@ -83,12 +93,14 @@ public class Shop
 					
 					break;
 					
-					//calling functions for editing itemList in cart
+					/*
+					 * calling functions for editing itemList in cart
+					 */
 					case 2:
 						
 						System.out.print ("Enter id of item to be Edited : ");
 						int idOfItemEditing = scan.nextInt();
-						while(idOfItemEditing < 0 || idOfItemEditing>countOfItem){
+						while(idOfItemEditing < 0 || idOfItemEditing > countOfItem){
 							System.out.println("Please enter a valid Item Id!");
 							idOfItemEditing = scan.nextInt();
 						}
@@ -101,7 +113,9 @@ public class Shop
 						}
 						System.out.print ("Enter new Quantity of "+ idOfItemEditing +" : ");
 						int editedItemQuantity = scan.nextInt();
-						//validating the edited quantity
+						/*
+						 * validating the edited quantity
+						 */
 						while(editedItemQuantity <= 0){
 							System.out.println("Please enter a valid Item Quantity!");
 							editedItemQuantity = scan.nextInt();
@@ -109,48 +123,62 @@ public class Shop
 						shoppingCart.editItemDetailInCart(idOfItemEditing, editedItemQuantity);
 						break;
 						
-					//calling functions for removing item to cart
+					/*
+					 * calling functions for removing item to cart
+					 */
 					case 3:
-						
-						//checking if cart is empty or not
+						/*
+						 * checking if cart is empty or not
+						 */
 						if(shoppingCart.itemCount == 0)
-							throw new Exception("Sorry! You can't remove elements from an empty cart");
+							System.out.println("Sorry! You can't remove elements from an empty cart.");
 						
-						//deleting Item from cart using Item Id
-						System.out.print ("Enter id of item to be removed : ");
-						int idOfItemToBeRemoved = scan.nextInt();
-						if(idOfItemToBeRemoved<=0 || idOfItemToBeRemoved>countOfItem){
-							while(idOfItemToBeRemoved <= 0 || idOfItemToBeRemoved >= countOfItem){
-								System.out.println("Please enter a valid Item Id!");
-								idOfItemToBeRemoved = scan.nextInt();
+						/*
+						 * deleting Item from cart using Item Id
+						 */
+						else{
+							System.out.print ("Enter id of item to be removed : ");
+							int idOfItemToBeRemoved = scan.nextInt();
+							if(idOfItemToBeRemoved <= 0 || idOfItemToBeRemoved > countOfItem){
+								while(idOfItemToBeRemoved <= 0 || idOfItemToBeRemoved > countOfItem){
+									System.out.println("Please enter a valid Item Id!");
+									idOfItemToBeRemoved = scan.nextInt();
+								}
+								
 							}
-						}
-						else {
-							while(!shoppingCart.checkItemInCartById(idOfItemToBeRemoved)){
-								System.out.print ("Oops! Item with this id doesn't doesn't in the cart. Re-enter id : ");
-								idOfItemToBeRemoved = scan.nextInt();
+							else {
+								while(!shoppingCart.checkItemInCartById(idOfItemToBeRemoved)){
+									System.out.print ("Oops! Item with this id doesn't doesn't in the cart. Re-enter id : ");
+									idOfItemToBeRemoved = scan.nextInt();
+								}
 							}
 							shoppingCart.removeFromCart(idOfItemToBeRemoved);
 						}
 						break;
 						
-		      		//calling function for displaying shopping cart
+		      		/*
+		      		 * calling function for displaying shopping cart
+		      		 */
 					case 4:
 						if(shoppingCart.itemCount == 0)
-							System.out.println("Sorry! The cart is empty. You can add items to the cart.");
+							System.out.println("The cart is empty! You can add items to the cart.");
 						else	
 							System.out.println(shoppingCart.displayItems()); 
 						break;
 				  
-					//calling function to print the bill
+					/*
+					 * calling function to print the bill
+					 */
 					case 5:
 						if(shoppingCart.itemCount == 0)
-							System.out.println("Sorry! The cart is empty. You can add items to the cart.");
+							System.out.println("The cart is empty! You can add items to the cart.");
 						else
 							System.out.println(shoppingCart.calculateBill());
 						break;
 						
-					//exiting the ShoppingCart
+					/*
+					 * exiting the ShoppingCart
+					 */
 					case 6:
 						System.out.println("\n" + "Thank You for connecting!");
 						System.exit(0);
@@ -158,10 +186,10 @@ public class Shop
 				}
     		}
     		catch(NullPointerException e){
-    			System.out.println("Please redo the process due to invalid input entered!");
+    			System.out.println("Closed the session due to invalid input!");
     		}
     		catch(InputMismatchException e){
-    			System.out.println("Please Start over and enter valid inputs!");
+    			System.out.println("Closed the session due to invalid input!");
     		}
     		catch(Exception e){
     			System.out.print(e.getMessage());
