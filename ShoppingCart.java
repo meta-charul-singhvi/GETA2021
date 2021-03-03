@@ -1,6 +1,17 @@
 package shop;
-//   ShoppingCart.java
-//   Represents a shopping cart list
+/* ShoppingCart.java
+ * Represents the shopping cart list which contains:
+ * @Cart List of items 
+ * @itemCount Total items in cart 
+ * @totalPrice Total bill amount
+ * @capacity Current capacity of the cart
+ * Methods such as:
+ * @addToCart adds elements to the cart.
+ * @editItemDetailInCart edit the quantity of already present element in cart using item Id.
+ * @removeFromCart removes specific item from the cart
+ * @displayItems Display the Cart items
+ * @calculateBill returns the total bill calculated
+ */
 
 public class ShoppingCart
 {
@@ -11,7 +22,9 @@ public class ShoppingCart
     private int capacity;       // current cart capacity
 
     
-    //  Creates an empty shopping cart with a capacity of 5 items.
+    /*
+     *   Creates an empty shopping cart with a capacity of 5 items.
+     */
     public ShoppingCart()
     {
       capacity = 5;
@@ -20,7 +33,9 @@ public class ShoppingCart
       totalPrice = 0.0;
     }
      
-    //  Adds an item to the shopping cart.
+    /*
+     *   Adds an item to the shopping cart.
+     */
     public void addToCart(int itemId, String itemName, double price, int quantity)
     { 
 
@@ -34,7 +49,9 @@ public class ShoppingCart
         }
     }
     
-    //  Edits the item in the shopping cart.
+    /*
+     *   Edits the item in the shopping cart.
+     */
     public void editItemDetailInCart(int itemId, int updatedQuantity)
     { 
     	Item updateItem = new Item();
@@ -48,7 +65,9 @@ public class ShoppingCart
         updatedItem = null;
     }
     
-    //  Removes an item from the shopping cart.
+    /*
+     *   Removes an item from the shopping cart.
+     */
     public void removeFromCart(int itemId)
     { 
     	//checking if item with the given Id is present in the cart
@@ -62,10 +81,11 @@ public class ShoppingCart
 	    
 	    System.out.println("Item removed successfully : " + removeItem);
 	    removeItem = null;
-        
     }
 
-    //  Returns the contents of the cart together with summary information.
+    /*
+     *   Returns the contents of the cart together with summary information.
+     */
     public String displayItems()
     {
       
@@ -78,21 +98,26 @@ public class ShoppingCart
       return contents;
     }
     
-    //updating total price on editing or removing item from cart
-    //for removing item updatedQuantity will become zero
+    /* Updating total price on editing or removing item from cart
+     * for removing item updatedQuantity will become zero
+     */
     public void updateTotalPrice(Item updateItem, int updatedQuantity){
     	totalPrice -= updateItem.getPrice() * updateItem.getQuantity();
     	totalPrice +=  updateItem.getPrice() * updatedQuantity;
     }
     
-    // returns calculated bill
+    /*
+     *  returns calculated bill
+     */
     public String calculateBill()
     {
       String contents = "\nTotal Bill : " + (totalPrice) + "\n";
       return contents;
     }
     
-    // Increases the capacity of the shopping cart by 3
+    /*
+     *  Increases the capacity of the shopping cart by 3
+     */
     private void increaseSize()
     {
         Item[] temp = new Item[capacity+1];
@@ -105,7 +130,9 @@ public class ShoppingCart
         capacity = cart.length;
     }
     
-  //checking if item with the given Id is present in the cart
+    /*
+     * checking if item with the given Id is present in the cart
+     */
     public boolean checkItemInCartById(int checkItemIdInCart){
     	for(int checkItemId = 0; checkItemId < itemCount; checkItemId++){
         	if(checkItemIdInCart == (cart[checkItemId].getItemId()) ){
@@ -115,7 +142,9 @@ public class ShoppingCart
     	return false;
     }
     
-    //checking if item with the given name is present in the cart
+    /*
+     * checking if item with the given name is present in the cart
+     */
     public boolean checkItemInCartByName(String checkItemNameInCart){
     	for(int checkItemId = 0; checkItemId < itemCount; checkItemId++){
         	if(checkItemNameInCart.equalsIgnoreCase(cart[checkItemId].getName()) ){
