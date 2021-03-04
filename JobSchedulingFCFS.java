@@ -1,6 +1,10 @@
 /*
  * @author : Charul Singhvi
  * @date : 04-03-2021
+ * @calCompTime -> Completion Time: Time taken for the execution to complete, starting from arrival time of first process.
+ * @calWaitTime -> Waiting Time: Total time the process has to wait before it's execution begins. It is the difference between the Turn Around time and the Burst time of the process.
+ * @calTurnAroundTime -> Turn Around Time: Time taken to complete after arrival. In simple words, it is the difference between the Completion time and the Arrival time.
+ * Burst Time : Time required to execute a process.
  */
 
 import java.util.InputMismatchException;
