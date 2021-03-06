@@ -1,28 +1,33 @@
-/* @author : Charul Singhvi
-*  @date : 03/03/2021
-*/
-
+/*
+ * @author - Charul Singhvi
+ * @date - 06-03-2021
+ * @lcmOfNumbers is to calculate lcm of 2 given numbers using recusrion
+ * @hcfOfNumbers is to calculate hcf of 2 given numbers using recusrion
+ */
 package lcm_hcf;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class LCM_HCF {
 
-	public static int lcmOfNumbers(int x, int y, int count) throws Exception{
+	/*
+	 * calculating lcm of numbers
+	 */
+	public static double lcmOfNumbers(double x, double y, int count) throws Exception{
 	
-		if(x<0 || y<0)
-			throw new Exception("Input should be positive numbers!");
-		
-		else if(x==0 && y==0)
-			throw new Exception("Input should be non zero numbers!");
-		
-		else if(x==0 || y==0)
+		if(x==0 || y==0)
 			return 0;
 		
-		int lcm = 0;
+		double lcm = 0;
 		
-		//multiplying until getting a multiple of bigger number as lcm
+		/*
+		 * checking for the multiples of bigger number perfectly divisible by smaller number
+		 */
 		if((x*count) % y == 0)
 			return x*count;
 		
+		/*
+		 * recursively calling the function
+		 */
 		else{
 			count++;
 			lcm = lcmOfNumbers(x, y, count);
@@ -31,22 +36,22 @@ public class LCM_HCF {
 		
 	}
 	
-	public static int hcfOfNumbers(int x, int y) throws Exception{
+	/*
+	 * calculating hcf of numbers
+	 */
+	public static double hcfOfNumbers(double x, double y) throws Exception{
 	
-		if(x<0 || y<0)
-			throw new Exception("Input should be positive numbers!");
-		
-		else if(x==0 && y==0)
-			throw new Exception("Input should be non zero numbers!");
-		
-		else if(x==0)
+		if(x==0)
 			return y;
 		
 		else if(y==0)
 			return x;
 		
-		int hcf=1;
+		double hcf=1;
 		
+		/*
+		 * checking for perfect division of remainder and the divisor after first division of the 2 digits
+		 */
 		if(x%y == 0)
 			return y;
 		else
@@ -56,23 +61,57 @@ public class LCM_HCF {
 		
 	}
 	
-	public static void main(String[] args) throws Exception{
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter digit 1 :");
-		int x = scan.nextInt();
-		System.out.print("Enter digit 2 :");
-		int y =scan.nextInt();
+	public static void main(String[] args) throws NullPointerException, StackOverflowError, InputMismatchException, Exception{
+		try{
+			Scanner scan = new Scanner(System.in);
+			
+			while(true){
+			
+				System.out.print("Enter digit 1 :");
+				int digit1 = scan.nextInt();
+				while(digit1<=0){
+					System.out.print("Please enter a natural number : ");
+					digit1 = scan.nextInt();
+				}
+				System.out.print("Enter digit 2 :");
+				int digit2 =scan.nextInt();
+				while(digit2<=0){
+					System.out.print("Please enter a natural number : ");
+					digit1 = scan.nextInt();
+				}
+				
+				double first = Math.max(digit1, digit2);
+				double second = Math.min(digit1, digit2);
+				
+				double lcm = lcmOfNumbers(first, second, 1);
+				System.out.println("LCM of the numbers are : "+lcm);
+				
+				double hcf = hcfOfNumbers(first,second);
+				System.out.println("HCF of the numbers are : "+hcf);
+				
+				System.out.println("Do you want to continue (true/false)?");
+				Boolean conti = scan.nextBoolean();
+				
+				if(conti){}
+				else if(!conti){
+					System.out.println("Thank you for connecting!");
+					System.exit(0);
+				}
+				else{
+					System.out.println("Invalid Input!");
+					System.exit(0);
+				}
+			}
+		}
+		catch(InputMismatchException e){
+			System.out.println("Please enter integer values!");
+		}
+		catch(StackOverflowError e){
+			System.out.println("Not acceptable inputs!");
+		}
+		catch(Exception e){
+			System.out.println("Invalid Input!");
+		}
 		
-		int first = Math.max(x, y);
-		int second = Math.min(x, y);
-		
-		int lcm = lcmOfNumbers(first, second, 1);
-		System.out.println("LCM of the numbers are : "+lcm);
-		
-		int hcf = hcfOfNumbers(first,second);
-		System.out.println("HCF of the numbers are : "+hcf);
-		
-		scan.close();
 	}
-
 }
