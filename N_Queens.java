@@ -1,16 +1,19 @@
-/* @author : Charul Singhvi
-*  @date : 03/03/2021
-*/
-
+/*
+ * @author - Charul Singhvi
+ * @date - 06-03-2021
+ * @createMatrix creates an empty matrix and prints the N-Queen matrix
+ * @nQueen is calling itself and checking for a particular row  
+ * @checkIfQueenCanBePlaced checks if a queen can be placed in a particular cell or not
+ */
 package nQueen;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class N_Queens {
 
-	//Creating initial matrix and printing final Results
-	public static void createMatrix(int dimensionOfMatrix) throws Exception{
-		if (dimensionOfMatrix<=3){
-			throw new Exception ("The size of the matrix should be greater than 3!");
-		}
+	/*
+	 * Creating initial matrix and printing final Results
+	 */
+	public static void createMatrix(int dimensionOfMatrix){
 		int [][] userInputArray = new int[dimensionOfMatrix][dimensionOfMatrix];
 		for (int i=0;i<dimensionOfMatrix;i++){
 			for (int j=0;j<dimensionOfMatrix;j++){
@@ -26,13 +29,12 @@ public class N_Queens {
 		}
 	}
 	
-//	Recursive method to solve the N-Queens problem
-	public static Boolean nQueen(int[][] userInputArray, int row,
-			int dimensionOfMatrix) throws Exception {
+	/*
+	 * Recursive method to solve the N-Queens problem
+	 * Row specific method
+	 */
+	public static Boolean nQueen(int[][] userInputArray, int row, int dimensionOfMatrix) {
 		
-		if (dimensionOfMatrix == 0) {
-			throw new Exception("The dimension should be non zero.");
-		}
 		if (row >= dimensionOfMatrix) {
 			return true;
 		}
@@ -50,7 +52,9 @@ public class N_Queens {
 
 	}
 
-//	Method to check if queen can be placed in the cell.
+	/*
+	 * Method to check if queen can be placed in the cell.
+	 */
 	public static Boolean checkIfQueenCanBePlaced(int[][] userInputArray, int row, int column, int matrixDimension) {
 		
 		for (int i = 0; i < row; i++) {
@@ -73,11 +77,23 @@ public class N_Queens {
 		return true;
 	}
 
-	public static void main(String args[]) throws Exception {
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter the dimensions of N-Queens matrix : ");
-		int dim = scan.nextInt();
-		createMatrix(dim);
-		scan.close();
+	public static void main(String args[]) throws InputMismatchException, Exception {
+		try{
+			Scanner scan = new Scanner(System.in);
+			System.out.print("Enter the dimensions of N-Queens matrix : ");
+			int dim = scan.nextInt();
+			while(dim<=3){
+				System.out.print("Please enter valid dimensions (>3) : ");
+				dim = scan.nextInt();
+			}
+			createMatrix(dim);
+			scan.close();
+		}
+		catch(InputMismatchException e){
+			System.out.print("Invalid input!");
+		}
+		catch(Exception e){
+			System.out.print("Invalid input!");
+		}
 	}
 }
