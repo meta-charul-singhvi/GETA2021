@@ -52,7 +52,7 @@ public class LinkedListRotationMain {
 			//getting starting index of sublist
 			System.out.println("Enter start position (left) >= 0 :");
 			int leftPointer = scan.nextInt();
-			while (leftPointer<0 || leftPointer>sizeOfList-1){
+			while (leftPointer<0 || leftPointer>sizeOfList){
 				System.out.println("Enter valid Start position : ");
 				leftPointer = scan.nextInt();
 			}
@@ -61,7 +61,7 @@ public class LinkedListRotationMain {
 			System.out.println("Enter end position (right) < "+ sizeOfList +":");
 			int rightPointer = scan.nextInt();
 			
-			while (rightPointer<0 || rightPointer>sizeOfList-1 || rightPointer<=leftPointer){
+			while (rightPointer<0 || rightPointer>sizeOfList || rightPointer<=leftPointer){
 				System.out.println("Enter valid end position : ");
 				leftPointer = scan.nextInt();
 			}
