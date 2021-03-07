@@ -1,6 +1,6 @@
 # GETA2021 Abstract and Concrete Data Types
 
-##Problem 1
+## Problem 1
 
 Implement the immutable class intSet using an array to represent a set of integers in the range 1-1000. It should support public methods like - 
 
@@ -16,7 +16,7 @@ Implement the immutable class intSet using an array to represent a set of intege
 
 You may use private helper methods. 
 
-##Problem 2
+## Problem 2
 
 Implement the immutable class Poly using an array to represent single variable polynomial. Note that you should be storing only those terms of polynomial that have non zero coefficient. You can assume that the coefficients are integers
 
