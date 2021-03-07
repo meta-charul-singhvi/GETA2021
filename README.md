@@ -1,4 +1,4 @@
-# GETA2021 7- Inheritance and Composition
+# GETA2021 Inheritance and Composition
 
 ### Idea
 
