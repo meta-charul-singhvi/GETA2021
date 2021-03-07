@@ -1,6 +1,7 @@
 /*
  * @author - Charul Singhvi
  * @date - 04-03-2021
+ * 
  */
 package LinkedList;
 
@@ -28,15 +29,16 @@ public class LinkedListRotationMain {
 	 * @throws InputMismatchException if data type of input is different than expected.
 	 * @throws Exception
 	 */
-	@SuppressWarnings("resource")
+	
 	private void userInput(LinkedList linkedList) throws InputMismatchException, Exception{
-//		try{
+		try{
 			System.out.println("Enter number of nodes to be entered :");
 			Scanner scan = new Scanner(System.in);
 			int sizeOfList = scan.nextInt();
 			
-			if (sizeOfList<=0){
-				throw new Exception ("Enter valid size");
+			while (sizeOfList<=0){
+				System.out.println("Enter valid size : ");
+				sizeOfList = scan.nextInt();
 			}
 			
 			//to get the values of nodes
@@ -50,27 +52,25 @@ public class LinkedListRotationMain {
 			//getting starting index of sublist
 			System.out.println("Enter start position (left) >= 0 :");
 			int leftPointer = scan.nextInt();
-	
-			if (leftPointer<0 || leftPointer>sizeOfList-1){
-				throw new Exception("Invalid start position.");
+			while (leftPointer<0 || leftPointer>sizeOfList-1){
+				System.out.println("Enter valid Start position : ");
+				leftPointer = scan.nextInt();
 			}
 			
 			//getting ending index of sublist
 			System.out.println("Enter end position (right) < "+ sizeOfList +":");
 			int rightPointer = scan.nextInt();
 			
-			if (rightPointer<0 || rightPointer>sizeOfList-1){
-				throw new Exception ("Invalid end position.");
-			}
-			
-			if (leftPointer>rightPointer){
-				throw new Exception ("Invalid positions.");
+			while (rightPointer<0 || rightPointer>sizeOfList-1 || rightPointer<=leftPointer){
+				System.out.println("Enter valid end position : ");
+				leftPointer = scan.nextInt();
 			}
 			
 			System.out.println("Enter number of times to be rotated : ");
 			int numberOftimes = scan.nextInt();
 			
 			if (numberOftimes<0){
+				scan.close();
 				throw new Exception("Invalid input for number of rotations");
 			}
 			else if (numberOftimes==0){
@@ -83,9 +83,9 @@ public class LinkedListRotationMain {
 				linkedList.rotateSubList(leftPointer, rightPointer, numberOftimes%(rightPointer-leftPointer+1));
 			}
 			scan.close();
-//		}
-//		catch(Exception e){
-//			System.out.print("Invalid input!");
-//		}
+		}
+		catch(Exception e){
+			System.out.print("Invalid Input!");
+		}
 	}
 }
