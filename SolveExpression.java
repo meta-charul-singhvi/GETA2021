@@ -280,7 +280,7 @@ public class SolveExpression {
 			return result;
 		}
 		catch(ArithmeticException e){
-			System.out.print(e.getMessage());
+			System.out.print("Error is: "+e.getMessage());
 		}
 		return result;
 	}
