@@ -1,10 +1,11 @@
+package lcm_hcf;
+
 /*
  * @author - Charul Singhvi
  * @date - 06-03-2021
  * @lcmOfNumbers is to calculate lcm of 2 given numbers using recusrion
  * @hcfOfNumbers is to calculate hcf of 2 given numbers using recusrion
  */
-package lcm_hcf;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class LCM_HCF {
@@ -12,12 +13,12 @@ public class LCM_HCF {
 	/*
 	 * calculating lcm of numbers
 	 */
-	public static double lcmOfNumbers(double x, double y, int count) throws Exception{
+	public static int lcmOfNumbers(int x, int y, int count) throws Exception{
 	
 		if(x==0 || y==0)
 			return 0;
 		
-		double lcm = 0;
+		int lcm = 0;
 		
 		/*
 		 * checking for the multiples of bigger number perfectly divisible by smaller number
@@ -39,7 +40,7 @@ public class LCM_HCF {
 	/*
 	 * calculating hcf of numbers
 	 */
-	public static double hcfOfNumbers(double x, double y) throws Exception{
+	public static int hcfOfNumbers(int x, int y) throws Exception{
 	
 		if(x==0)
 			return y;
@@ -47,7 +48,7 @@ public class LCM_HCF {
 		else if(y==0)
 			return x;
 		
-		double hcf=1;
+		int hcf=1;
 		
 		/*
 		 * checking for perfect division of remainder and the divisor after first division of the 2 digits
@@ -80,13 +81,13 @@ public class LCM_HCF {
 					digit1 = scan.nextInt();
 				}
 				
-				double first = Math.max(digit1, digit2);
-				double second = Math.min(digit1, digit2);
+				int first = Math.max(digit1, digit2);
+				int second = Math.min(digit1, digit2);
 				
-				double lcm = lcmOfNumbers(first, second, 1);
+				int lcm = lcmOfNumbers(first, second, 1);
 				System.out.println("LCM of the numbers are : "+lcm);
 				
-				double hcf = hcfOfNumbers(first,second);
+				int hcf = hcfOfNumbers(first,second);
 				System.out.println("HCF of the numbers are : "+hcf);
 				
 				System.out.println("Do you want to continue (true/false)?");
