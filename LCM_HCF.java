@@ -113,6 +113,5 @@ public class LCM_HCF {
 		catch(Exception e){
 			System.out.println("Invalid Input!");
 		}
-		
 	}
 }
