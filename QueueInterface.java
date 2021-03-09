@@ -1,7 +1,7 @@
 package Stack_Queues;
 
 public interface QueueInterface {
-
+	
 	// function to add element to queue
 	void enQueue(int element) throws Exception;
 	
@@ -9,10 +9,10 @@ public interface QueueInterface {
 	int deQueue() throws Exception;
 	
 	//function to check if queue is empty
-	Boolean isEmpty();
+	Boolean isEmpty(Queue queue);
 	
 	//function to check if queue is full
-	Boolean isFull();
+	Boolean isFull(Queue queue);
 	
 }
 
