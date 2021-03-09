@@ -3,17 +3,16 @@
  * @date : 08-03-2021
  */
 package Stack_Queues;
-
 import java.util.Scanner;
 
 public class QueueMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		QueueMain mainObject = new QueueMain();
 		mainObject.userInput ();	
 	}
 	
-	private void userInput(){
+	private void userInput()throws Exception{
 		System.out.println("Enter size of queue : ");
 		Scanner scan = new Scanner(System.in);
 		try {
@@ -32,7 +31,6 @@ public class QueueMain {
 					System.out.println("Enter Element to be pushed");
 					int element = scan.nextInt();
 					queueObject.enQueue(element);
-					System.out.println("Element added successfully!");
 				}
 				else if (choice==2){
 					queueObject.deQueue();
