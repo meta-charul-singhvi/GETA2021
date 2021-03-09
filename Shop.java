@@ -98,29 +98,41 @@ public class Shop
 					 */
 					case 2:
 						
-						System.out.print ("Enter id of item to be Edited : ");
-						int idOfItemEditing = scan.nextInt();
-						while(idOfItemEditing < 0 || idOfItemEditing > countOfItem){
-							System.out.println("Please enter a valid Item Id!");
-							idOfItemEditing = scan.nextInt();
+						if(shoppingCart.cartIsEmpty()){
+							System.out.println("Cart is Empty!");
 						}
-						if(!shoppingCart.checkItemInCartById(idOfItemEditing))
-						{
-							while(shoppingCart.checkItemInCartById(idOfItemEditing)){
-								System.out.print ("Item with this id doesn't exist.Please re-enter id : ");
+						else{
+							System.out.print ("Enter id of item to be Edited : ");
+							int idOfItemEditing = scan.nextInt();
+							while(idOfItemEditing <= 0 || idOfItemEditing > countOfItem){
+								System.out.println("Please enter a valid Item Id: ");
 								idOfItemEditing = scan.nextInt();
 							}
+							if( !shoppingCart.checkItemInCartById(idOfItemEditing) )
+							{
+								while(shoppingCart.checkItemInCartById(idOfItemEditing)){
+									System.out.print ("Item with this id doesn't exist.Please re-enter id : ");
+									idOfItemEditing = scan.nextInt();
+								}
+							}
+							System.out.print ("Enter new Quantity of "+ idOfItemEditing +" : ");
+							int editedItemQuantity = scan.nextInt();
+							System.out.println(editedItemQuantity);
+							/*
+							 * validating the edited quantity
+							 */
+							while(editedItemQuantity < 0){
+								System.out.println("Please enter a valid Item Quantity:");
+								editedItemQuantity = scan.nextInt();
+								
+							}
+							try{
+								shoppingCart.editItemDetailInCart(idOfItemEditing, editedItemQuantity);
+							}
+							catch(Exception e){
+								System.out.println ("Not edited!");
+							}
 						}
-						System.out.print ("Enter new Quantity of "+ idOfItemEditing +" : ");
-						int editedItemQuantity = scan.nextInt();
-						/*
-						 * validating the edited quantity
-						 */
-						while(editedItemQuantity <= 0){
-							System.out.println("Please enter a valid Item Quantity!");
-							editedItemQuantity = scan.nextInt();
-						}
-						shoppingCart.editItemDetailInCart(idOfItemEditing, editedItemQuantity);
 						break;
 						
 					/*
@@ -130,7 +142,7 @@ public class Shop
 						/*
 						 * checking if cart is empty or not
 						 */
-						if(shoppingCart.itemCount == 0)
+						if(shoppingCart.cartIsEmpty())
 							System.out.println("Sorry! You can't remove elements from an empty cart.");
 						
 						/*
@@ -144,7 +156,6 @@ public class Shop
 									System.out.println("Please enter a valid Item Id!");
 									idOfItemToBeRemoved = scan.nextInt();
 								}
-								
 							}
 							else {
 								while(!shoppingCart.checkItemInCartById(idOfItemToBeRemoved)){
