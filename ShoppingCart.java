@@ -54,15 +54,13 @@ public class ShoppingCart
      */
     public void editItemDetailInCart(int itemId, int updatedQuantity)
     { 
-    	Item updateItem = new Item();
+    	Item updateItem = cart[itemId-1];
     	Item updatedItem = new Item();
     	System.out.println("Item in the cart " + updateItem);
         updateTotalPrice(updateItem, updatedQuantity);
-        cart[itemId-1].updatedQuantity(updatedQuantity);
+        cart[itemId-1].setUpdatedQuantity(updatedQuantity);
         updatedItem = cart[itemId-1];
         System.out.println("Updated to " + updatedItem+" successfully!");
-        updateItem = null;
-        updatedItem = null;
     }
     
     /*
@@ -71,8 +69,7 @@ public class ShoppingCart
     public void removeFromCart(int itemId)
     { 
     	//checking if item with the given Id is present in the cart
-		Item removeItem = new Item();
-		removeItem = cart[itemId-1];
+		Item removeItem = cart[itemId-1];
 		for(int removingId=itemId; removingId<itemCount; removingId++)
 			cart[itemId-1] = cart[itemId];
 	    itemCount-=1;
@@ -151,6 +148,15 @@ public class ShoppingCart
         		return true;
         	}
         }
+    	return false;
+    }
+    
+    /*
+     * checking cart 
+     */
+    public boolean cartIsEmpty(){
+    	if(itemCount == 0 )
+    		return true;
     	return false;
     }
     
