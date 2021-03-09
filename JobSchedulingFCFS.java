@@ -7,17 +7,21 @@
  * Burst Time : Time required to execute a process.
  */
 
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 public class JobSchedulingFCFS {
+	
+	public static HashMap<Integer, Integer> FCFS = new HashMap<Integer,Integer>();
 	/*
 	 * Calculation completion time for a process
 	 */
 	static int[] calCompTime(int[][] process, int n){
 		int[] compTime = new int[n];
 		
-		compTime[0] = process[0][1]+process[0][0];
+		compTime[0] = process[0][1];
 		for(int i=1; i<n; i++){
 			/*
 			 * checking if the completion time of earlier process is less than arrival 
@@ -55,6 +59,22 @@ public class JobSchedulingFCFS {
 		return turnArdTime;
 	}
 	
+	static int[][] sortFcfs(int[][] process , int n){
+		int[] smallRow = process[0];
+		for(int i=0; i<n; i++){
+			smallRow = process[i];
+			int j=i+1;
+			for(; j<n; j++){
+				if(process[j][0] < process[i][0]){
+					process[i] = process[j];
+					process[j] = smallRow;
+					smallRow = process[j];
+				}
+			}
+		}
+		return process;
+	}
+	
 	public static void main(String[] args)throws InputMismatchException, NullPointerException, Exception {
 		try{	
 			Scanner scan = new Scanner(System.in);
@@ -66,8 +86,9 @@ public class JobSchedulingFCFS {
 				process[i][0] = scan.nextInt();
 				System.out.print("Enter burst time for process "+i+": ");
 				process[i][1] = scan.nextInt();
+				
 			}
-			
+			process = sortFcfs(process, n);
 			int[] compTime = calCompTime(process,n);
 			int[] waitTime = calWaitTime(process,compTime,n);
 			int[] turnAroundTime = calTurnAroundTime(compTime,waitTime,n);
@@ -85,21 +106,21 @@ public class JobSchedulingFCFS {
 					maxTimeProcess = i;
 				}
 			}
-			
-			double avgWaitTime = sumWait/n;
-			System.out.println("Average Waiting Time : "+ avgWaitTime);
-			System.out.println("Maximum Waiting Time is "+ maxWaitTime+ " for process P"+maxTimeProcess);
+			double size = n;
+			double avgWaitTime = sumWait/size;
+			System.out.println("Average Waiting Time : "+ avgWaitTime +" ms");
+			System.out.println("Maximum Waiting Time is "+ maxWaitTime+ " ms for process P"+maxTimeProcess);
 			
 			scan.close();
 		}
 		catch(InputMismatchException e){
-			System.out.println("Enter a valid input!");
+			System.out.println("Invalid input!");
 		}
 		catch(NullPointerException e){
-			System.out.println("Enter a valid input!");
+			System.out.println("Invalid input!");
 		}
 		catch(Exception e){
-			System.out.println("Enter a valid input!");
+			System.out.println("Invalid input!");
 		}
 	}
 
