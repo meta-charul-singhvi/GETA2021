@@ -26,15 +26,17 @@ public class QueueMain {
 			QueueInterface queueObject = new Queue(size);
 		
 			while (true){
-				System.out.println("Enter 1 to enqueue \n	2 to dequeue\n	3 to display queue");
+				System.out.println("Enter 1 to enqueue \n	2 to dequeue");
 				int choice = scan.nextInt();
 				if (choice==1){
 					System.out.println("Enter Element to be pushed");
 					int element = scan.nextInt();
 					queueObject.enQueue(element);
+					System.out.println("Element added successfully!");
 				}
 				else if (choice==2){
 					queueObject.deQueue();
+					System.out.println("Element removed successfully!");
 				}
 				else if (choice==3){
 					break;
