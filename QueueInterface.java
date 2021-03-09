@@ -13,5 +13,6 @@ public interface QueueInterface {
 	
 	//function to check if queue is full
 	Boolean isFull();
+	
 }
 
