@@ -5,14 +5,15 @@ public class Queue implements QueueInterface{
 	private int[] queue;
 	private int front;
 	private int rear;
+	private int capacity;
 	private int sizeOfQueue;
 
 	//constructor
-	public Queue(int sizeOfQueue){
-		this.sizeOfQueue = sizeOfQueue;
-		this.queue = new int[sizeOfQueue];
-		this.front = -1;
-		this.rear = -1;
+	public Queue(int capacity){
+		this.capacity = capacity; 
+		this.front = this.sizeOfQueue =0;
+		this.rear = capacity -1;
+		this.queue = new int[capacity];
 	}
 	
 	/*
@@ -24,19 +25,15 @@ public class Queue implements QueueInterface{
 	@Override
 	public void enQueue(int element) throws Exception {
 		
-		if (isFull()){
-			System.out.print(showQueue());
-			throw new Exception ("Queue is full");
+		if (isFull(this)) {
+            System.out.print("Queue is full!");
+            System.exit(0);
 		}
 		
-		if (isEmpty()){
-			rear = 0;
-			front = 0;
-		}
-		else{
-			rear =  (rear+1)%sizeOfQueue;
-		}
-		queue[rear] = element;
+        this.rear = (this.rear + 1) % this.capacity; 
+        this.queue[this.rear] = element; 
+        this.sizeOfQueue = this.sizeOfQueue + 1; 
+        System.out.println(element + " enqueued to queue"); 
 	}
 
 	/*
@@ -45,20 +42,18 @@ public class Queue implements QueueInterface{
 	 */
 	
 	@Override
-	public int deQueue() throws Exception {
-		
-		if (isEmpty()){
-			throw new Exception ("Queue is empty");	
+	public int deQueue() throws Exception { 
+        if (isEmpty(this)) {
+            System.out.print("Queue is empty!");
+            System.exit(0);
 		}
-		
-		int element = queue[front];
-		if (front == rear){
-			front =-1;
-			rear=-1;
-		}
-		front = (front+1)%sizeOfQueue;
-		return element;
-	}
+  
+        int item = this.queue[this.front]; 
+        this.front = (this.front + 1) 
+                     % this.capacity; 
+        this.sizeOfQueue = this.sizeOfQueue - 1; 
+        return item; 
+    } 
 
 	/*
 	 * function to check if queue is empty 
@@ -66,11 +61,8 @@ public class Queue implements QueueInterface{
 	 */
 	
 	@Override
-	public Boolean isEmpty() {
-		if (rear==-1){
-			return true;
-		}
-		return false;
+	public Boolean isEmpty(Queue queue) {
+		return (queue.sizeOfQueue == 0);
 	}
 
 	/*
@@ -79,10 +71,25 @@ public class Queue implements QueueInterface{
 	 */
 	
 	@Override
-	public Boolean isFull() {
-		if (((front==0) && (rear == sizeOfQueue-1)) || (front == ((rear+1)%sizeOfQueue))) {
-			return true;
-		}
-		return false;
+	public Boolean isFull(Queue queue) {
+		return (queue.sizeOfQueue == queue.capacity);
 	}	
+	
+	 // Method to get front of queue 
+    int front() 
+    { 
+        if (isEmpty(this)) 
+            return Integer.MIN_VALUE; 
+  
+        return this.queue[this.front]; 
+    } 
+  
+    // Method to get rear of queue 
+    int rear() 
+    { 
+        if (isEmpty(this)) 
+            return Integer.MIN_VALUE; 
+  
+        return this.queue[this.rear]; 
+    } 
 }
