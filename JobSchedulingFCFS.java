@@ -1,6 +1,6 @@
 /*
  * @author : Charul Singhvi
- * @date : 04-03-2021
+ * @date : 10-03-2021
  * @calCompTime -> Completion Time: Time taken for the execution to complete, starting from arrival time of first process.
  * @calWaitTime -> Waiting Time: Total time the process has to wait before it's execution begins. It is the difference between the Turn Around time and the Burst time of the process.
  * @calTurnAroundTime -> Turn Around Time: Time taken to complete after arrival. In simple words, it is the difference between the Completion time and the Arrival time.
@@ -51,10 +51,10 @@ public class JobSchedulingFCFS {
 	/*
 	 * Calculation Turn Around time time for a process
 	 */
-	static int[] calTurnAroundTime(int[] compTime, int[] waitTime, int n){
+	static int[] calTurnAroundTime(int[] compTime, int[][] process, int n){
 		int[] turnArdTime = new int[n];
-		for(int i=1; i<n; i++){
-			turnArdTime[i] =  compTime[i] - waitTime[i];
+		for(int i=0; i<n; i++){
+			turnArdTime[i] =  compTime[i] - process[i][0];
 		}
 		return turnArdTime;
 	}
@@ -84,14 +84,22 @@ public class JobSchedulingFCFS {
 			for(int i=0; i<n; i++){
 				System.out.print("Enter arrival time for process "+i+": ");
 				process[i][0] = scan.nextInt();
+				while(process[i][0]<0){
+					System.out.print("Enter valid arrival time for process "+i+": ");
+					process[i][0] = scan.nextInt();
+				}
 				System.out.print("Enter burst time for process "+i+": ");
 				process[i][1] = scan.nextInt();
+				while(process[i][1]<0){
+					System.out.print("Enter valid burst time for process "+i+": ");
+					process[i][0] = scan.nextInt();
+				}
 				
 			}
 			process = sortFcfs(process, n);
 			int[] compTime = calCompTime(process,n);
 			int[] waitTime = calWaitTime(process,compTime,n);
-			int[] turnAroundTime = calTurnAroundTime(compTime,waitTime,n);
+			int[] turnAroundTime = calTurnAroundTime(compTime,process,n);
 			int maxWaitTime = 0;
 			int maxTimeProcess = 0;
 			int sumWait=0;
@@ -114,10 +122,10 @@ public class JobSchedulingFCFS {
 			scan.close();
 		}
 		catch(InputMismatchException e){
-			System.out.println("Invalid input!");
+			System.out.println("Please enter integer input!");
 		}
 		catch(NullPointerException e){
-			System.out.println("Invalid input!");
+			System.out.println("Please enter some value!");
 		}
 		catch(Exception e){
 			System.out.println("Invalid input!");
