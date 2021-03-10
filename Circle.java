@@ -12,7 +12,7 @@ public class Circle implements Shape {
 	/* coordinates of circle */
 	private int xCoordinate;
 	private int yCoordinate;
-	private int radius;
+	private double radius;
 	private String uniqueId;
 
 	/**
@@ -20,12 +20,12 @@ public class Circle implements Shape {
 	 * 
 	 * @param xCoordinate
 	 * @param yCoordinate
-	 * @param radius
+	 * @param double1
 	 */
-	public Circle(int xCoordinate, int yCoordinate, int radius, String uniqueId) {
+	public Circle(int xCoordinate, int yCoordinate, Double double1, String uniqueId) {
 		this.xCoordinate = xCoordinate;
 		this.yCoordinate = yCoordinate;
-		this.radius = radius;
+		this.radius = double1;
 		this.uniqueId =uniqueId;
 	}
 
@@ -62,8 +62,7 @@ public class Circle implements Shape {
 		double n = radius;
 
 		// calculating coordinates of centre
-		m = Math.sqrt((xCoordinate * xCoordinate) + (yCoordinate * yCoordinate))
-				+ radius;
+		m = Math.sqrt((xCoordinate * xCoordinate) + (yCoordinate * yCoordinate))+ radius;
 		centreX = (m * xCoordinate) / (m - n);
 		centreX = (m * yCoordinate) / (m - n);
 
@@ -86,7 +85,6 @@ public class Circle implements Shape {
 	
 	@Override
 	public String getUniqueId() {
-		
 		return uniqueId;
 	}
 }

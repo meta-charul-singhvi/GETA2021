@@ -40,14 +40,21 @@ public class Screen {
 	 *            of shape object
 	 * @return 1 if shape removed successfully otherwise return 0
 	 */
-	public int deleteShapeFromScreen(String uniqueShapeId) {
+	public void deleteShapeFromScreen(String uniqueShapeId) {
 		if (uniqueShapeId != null) {
-			mapOfTimestamp.remove(mapOfShapeOnScreen.get(uniqueShapeId));
-			mapOfShapeOnScreen.remove(uniqueShapeId);
-			showShapesOnScreen();
-			return 1;
+			if(mapOfShapeOnScreen.get(uniqueShapeId) != null){
+				mapOfTimestamp.remove(mapOfShapeOnScreen.get(uniqueShapeId));
+				mapOfShapeOnScreen.remove(uniqueShapeId);
+				System.out.println("Deleted successfully !!");
+				System.out.println("Shapes present on the screen!");
+				showShapesOnScreen();
+				return;
+			}
 		}
-		return 0;
+		System.out.println("Deletion unsuccessful !!");
+		System.out.println("Shapes present on the screen!");
+		showShapesOnScreen();
+		return;
 	}
 
 	/**
@@ -57,16 +64,16 @@ public class Screen {
 	 * @return 1 if all shapes are removed successfully otherwise return 0
 	 */
 	public int deleteAllShapesOfSpecificType(String shapeType) {
-
+		int itemsRemoved=0;
 		for (String key : mapOfShapeOnScreen.keySet()) {
 			Shape value = mapOfShapeOnScreen.get(key);
 			if ((value.getType().name()).equals(shapeType)) {
 				mapOfShapeOnScreen.remove(key);
 				mapOfTimestamp.remove(value);
-
+				itemsRemoved++;
 			}
 		}
-		return 1;
+		return itemsRemoved;
 	}
 
 	/**
@@ -152,8 +159,7 @@ public class Screen {
 			System.out.println("Origin : " + shape.getOrigin());
 			System.out.println("Area : " + shape.getArea());
 			System.out.println("Perimeter : " + shape.getPerimeter());
-			System.out
-					.println("-----------------------------------------------------\n");
+			System.out.println("-----------------------------------------------------\n");
 		}
 	}
 

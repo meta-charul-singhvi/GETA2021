@@ -10,8 +10,8 @@ public class Rectangle implements Shape {
 	/* coordinates of rectangle */
 	private int xCoordinate;
 	private int yCoordinate;
-	private int width;
-	private int length;
+	private double width;
+	private double length;
 	private String uniqueId;
 
 	/**
@@ -19,14 +19,14 @@ public class Rectangle implements Shape {
 	 * 
 	 * @param xCoordinate
 	 * @param yCoordinate
-	 * @param length
-	 * @param width
+	 * @param double1
+	 * @param double2
 	 */
-	public Rectangle(int xCoordinate, int yCoordinate, int length, int width, String uniqueId) {
+	public Rectangle(int xCoordinate, int yCoordinate, Double double1, Double double2, String uniqueId) {
 		this.xCoordinate = xCoordinate;
 		this.yCoordinate = yCoordinate;
-		this.length = length;
-		this.width = width;
+		this.length = double1;
+		this.width = double2;
 		this.uniqueId = uniqueId;
 	}
 

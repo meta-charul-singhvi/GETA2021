@@ -10,7 +10,7 @@ public class Square implements Shape {
 	/* coordinates of square */
 	private int xCoordinate;
 	private int yCoordinate;
-	private int width;
+	private double width;
 	private String uniqueId;
 
 	/**
@@ -20,10 +20,10 @@ public class Square implements Shape {
 	 * @param yCoordinate
 	 * @param length
 	 */
-	public Square(int xCoordinate, int yCoordinate, int width, String uniqueId) {
+	public Square(int xCoordinate, int yCoordinate, Double double1, String uniqueId) {
 		this.xCoordinate = xCoordinate;
 		this.yCoordinate = yCoordinate;
-		this.width = width;
+		this.width = double1;
 		this.uniqueId =uniqueId;
 	}
 
@@ -43,9 +43,7 @@ public class Square implements Shape {
 	@Override
 	public String getOrigin() {
 		String originCoordinates = "";
-		originCoordinates += String.valueOf(xCoordinate) + ",";
-		originCoordinates += String.valueOf(yCoordinate);
-
+		originCoordinates += String.valueOf(xCoordinate) + "," + String.valueOf(yCoordinate);
 		return originCoordinates;
 	}
 

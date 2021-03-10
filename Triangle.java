@@ -9,9 +9,9 @@ public class Triangle implements Shape {
 	/* coordinates of triangle */
 	private int xCoordinate;
 	private int yCoordinate;
-	private int side1;
-	private int side2;
-	private int side3;
+	private double side1;
+	private double side2;
+	private double side3;
 	private String uniqueId;
 
 	/**
@@ -19,17 +19,17 @@ public class Triangle implements Shape {
 	 * 
 	 * @param xCoordinate
 	 * @param yCoordinate
-	 * @param side1
-	 * @param side2
-	 * @param side3
+	 * @param double1
+	 * @param double2
+	 * @param double3
 	 */
-	public Triangle(int xCoordinate, int yCoordinate, int side1, int side2,
-			int side3, String uniqueId) {
+	public Triangle(int xCoordinate, int yCoordinate, Double double1, Double double2,
+			Double double3, String uniqueId) {
 		this.xCoordinate = xCoordinate;
 		this.yCoordinate = yCoordinate;
-		this.side1 = side1;
-		this.side2 = side2;
-		this.side3 = side3;
+		this.side1 = double1;
+		this.side2 = double2;
+		this.side3 = double3;
 		this.uniqueId = uniqueId;
 	}
 
@@ -64,13 +64,13 @@ public class Triangle implements Shape {
 		int x = point.getXCoordinate();
 		int y = point.getYCoordinate();
 
-		int x2 = xCoordinate + side1;
-		int y2 = yCoordinate + side1;
+		double x2 = xCoordinate + side1;
+		double y2 = yCoordinate + side1;
 
-		int x3 = x2 + side2;
-		int y3 = y2 + side2;
+		double x3 = x2 + side2;
+		double y3 = y2 + side2;
 
-		if ( x >= xCoordinate && x <= x3 && y <= y2 && y3 >= y) {
+		if ( x >= xCoordinate && x <= x3 && y <= y2) {
 			return true;
 		}
 		return false;
