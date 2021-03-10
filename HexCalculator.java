@@ -1,6 +1,6 @@
 /*
  * @author : Charul Singhvi
- * @date : 04-03-2021
+ * @date : 10-03-2021
  */
 
 import java.util.HashMap;
@@ -36,7 +36,7 @@ public class HexCalculator {
     	value.put('E', 14);
     	value.put('F', 15);
     }
-	
+    
 	HexCalculator(String n1,String n2){
 		this.n1=n1;
 		this.n2=n2;
@@ -61,24 +61,40 @@ public class HexCalculator {
 	/*
 	 * To convert decimal to hex
 	 */
-	private static String toHex(int n){
-		return Integer.toHexString(n).toUpperCase();
+	private static String toHex(int n){    
+	     int rem;  
+	     String hex="";   
+	     char hexchars[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};  
+	    while(n>0)  
+	     {  
+	       rem=n%16;   
+	       hex=hexchars[rem]+hex;   
+	       n=n/16;  
+	     }  
+	    return hex;  
 	}
+	
+	
 	/*
 	 * arithmetic operations
 	 */
 	private String addNum(){
-		return toHex(HexCalculator.toDecimal(n1)+HexCalculator.toDecimal(n2))+ "\t\t\tDecimal Value : "+ (HexCalculator.toDecimal(n1)+HexCalculator.toDecimal(n2));
+		return toHex(HexCalculator.toDecimal(n1)+HexCalculator.toDecimal(n2))+ "\t\t\t\tDecimal Value : "+ (HexCalculator.toDecimal(n1)+HexCalculator.toDecimal(n2));
 	}
 	private String subNum(){
-		return toHex(HexCalculator.toDecimal(n1)-HexCalculator.toDecimal(n2))+ "\t\t\tDecimal Value : "+ (HexCalculator.toDecimal(n1)-HexCalculator.toDecimal(n2));
+		if(HexCalculator.toDecimal(n1) >= HexCalculator.toDecimal(n2))
+			return toHex(HexCalculator.toDecimal(n1)-HexCalculator.toDecimal(n2))+ "\t\t\t\tDecimal Value : "+ (HexCalculator.toDecimal(n1)-HexCalculator.toDecimal(n2));
+		else if(HexCalculator.toDecimal(n1) < HexCalculator.toDecimal(n2))
+			return "-"+toHex(HexCalculator.toDecimal(n2)-HexCalculator.toDecimal(n1))+ "\t\t\t\tDecimal Value : "+ (HexCalculator.toDecimal(n1)-HexCalculator.toDecimal(n2));
+		return "";
+	
 	}
  	private String mulNum(){
-		return toHex(HexCalculator.toDecimal(n1)*HexCalculator.toDecimal(n2))+ "\t\t\tDecimal Value : "+ (HexCalculator.toDecimal(n1)*HexCalculator.toDecimal(n2));
+		return toHex(HexCalculator.toDecimal(n1)*HexCalculator.toDecimal(n2))+ "\t\t\t\tDecimal Value : "+ (HexCalculator.toDecimal(n1)*HexCalculator.toDecimal(n2));
 	}
 	private String divNum(){
 		return toHex(HexCalculator.toDecimal(n1)/HexCalculator.toDecimal(n2))+" with reaminder " + toHex(HexCalculator.toDecimal(n1)%HexCalculator.toDecimal(n2))+
-				"\tDecimal Value : " + (HexCalculator.toDecimal(n1)/HexCalculator.toDecimal(n2)+" with reaminder " + HexCalculator.toDecimal(n1)%HexCalculator.toDecimal(n2));
+				"\t\tDecimal Value : " + (HexCalculator.toDecimal(n1)/HexCalculator.toDecimal(n2)+" with reaminder " + HexCalculator.toDecimal(n1)%HexCalculator.toDecimal(n2));
 	}
 	
 	/*
@@ -151,11 +167,11 @@ public class HexCalculator {
 					//delete
 					System.out.println("Division is: \t"+obj.divNum());
 					//check equals
-					System.out.println("\n"+hexString1.toUpperCase()+"==" +hexString2.toUpperCase()+ " : " +obj.checkEquals());
+					System.out.println("\n"+hexString1.toUpperCase()+" is equal to " +hexString2.toUpperCase()+ " : " +obj.checkEquals());
 					//check greater
-					System.out.println(hexString1.toUpperCase()+">" +hexString2.toUpperCase()+ " : " +obj.checkGreater());
+					System.out.println(hexString1.toUpperCase()+" is greater than " +hexString2.toUpperCase()+ " : " +obj.checkGreater());
 					//check smaller
-					System.out.println(hexString1.toUpperCase()+"<" +hexString2.toUpperCase()+ " : " +obj.checkSmaller());
+					System.out.println(hexString1.toUpperCase()+" is lesser than " +hexString2.toUpperCase()+ " : " +obj.checkSmaller());
 					
 				}
 				else{
@@ -168,13 +184,13 @@ public class HexCalculator {
 			scan.close();
 		}
 		catch(NullPointerException e){
-			System.out.println("Invalid HexaDecimal String. Please enter a valid string.");
+			System.out.println("Please enter some valid hexadecimal string!");
 		}
 		catch(InputMismatchException e){
-			System.out.println("Invalid HexaDecimal String. Please enter a valid string.");
+			System.out.println(e.getMessage()+" Invalid HexaDecimal String. Please enter a valid string.");
 		}
 		catch(Exception e){
-			System.out.println("Invalid HexaDecimal String. Please enter a valid string.");
+			System.out.println("Invalid HexaDecimal String!"+e.getMessage());
 		}
 		
 	}
