@@ -114,7 +114,7 @@ public class Marksheet {
 			/*
 			 * Assuming capacity of class = 100
 			 */
-			while(noOfStudents <= 0 || noOfStudents>=100)
+			while(noOfStudents <= 0 || noOfStudents>100)
 			{
 				System.out.print("Enter valid number of students in class (less than 101): ");
 				noOfStudents = scan.nextInt();
