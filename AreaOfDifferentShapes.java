@@ -13,9 +13,9 @@ public class AreaOfDifferentShapes {
 	
 	public double areaOfTriangle(double triangleBase, double triangleHeight)throws NullPointerException, NoSuchElementException, InputMismatchException, Exception{
 		/* Method to calculate area of triangle
-		 * @param triangleBase is a double type value of the base of triangle.
-		 * @param triangleHeight is a double type value of the height of triangle
-		 * @return the area of triangle as a double value.
+		 * @triangleBase is a double type value of the base of triangle.
+		 * @triangleHeight is a double type value of the height of triangle
+		 * returns the area of triangle as a double value.
 		 */ 
 		
 		double triangleArea = 0.5 * triangleBase * triangleBase;
@@ -24,9 +24,9 @@ public class AreaOfDifferentShapes {
 	
 	public double areaOfRectangle(double rectangleWidth, double rectangleHeight){
 		/* Method to calculate area of rectangle
-		 * @param rectangleWidth is a double type value of the width of rectangle.
-		 * @param rectangleHeight is a double type value of the height of rectangle.
-		 * @return the area of rectangle as a double value.
+		 * @rectangleWidth is a double type value of the width of rectangle.
+		 * @rectangleHeight is a double type value of the height of rectangle.
+		 * returns the area of rectangle as a double value.
 		 */
 		
 		double rectangleArea = rectangleHeight * rectangleWidth;
@@ -35,8 +35,8 @@ public class AreaOfDifferentShapes {
 
 	public double areaOfSquare(double squareSide){
 		/* Method to calculate area of square
-		 * @param squareSide is a double type value of the side of square.
-		 * @return the area of square as a double value.
+		 * @squareSide is a double type value of the side of square.
+		 * returns the area of square as a double value.
 		 */ 
 		
 		double squareArea = squareSide * squareSide;
@@ -45,8 +45,8 @@ public class AreaOfDifferentShapes {
 
 	public double areaOfCircle(double circleRadius){
 		/* Method to calculate area of circle.
-		 * @param circleRadius is a double type value of the radius of circle.
-		 * @return the area of circle as a double value.
+		 * @circleRadius is a double type value of the radius of circle.
+		 * returns the area of circle as a double value.
 		 */ 
 		
 		double circleArea = 3.14 * circleRadius * circleRadius;
@@ -73,7 +73,7 @@ public class AreaOfDifferentShapes {
 			if(userChoice>5 || userChoice<1)
 			{
 				while(userChoice>5 || userChoice<1){
-					System.out.println("Enter valid choice : ");
+					System.out.println("Please enter a valid choice : ");
 					userChoice = scan.nextInt();
 				}
 			}
@@ -85,7 +85,7 @@ public class AreaOfDifferentShapes {
 					double baseOfTriangle = scan.nextDouble();
 					System.out.println("Enter height of the triangle :");
 					double heightOfTriangle = scan.nextDouble();
-					System.out.printf("Area of triangle = %.2f\n" , (areaOfTriangle(baseOfTriangle, heightOfTriangle)));
+					System.out.printf("Area of triangle = %.2f cm^2\n" , (areaOfTriangle(baseOfTriangle, heightOfTriangle)));
 					break;
 				}
 			case 2:{
@@ -93,19 +93,19 @@ public class AreaOfDifferentShapes {
 					double widthOfRectangle = scan.nextDouble();
 					System.out.println("Enter height of the rectangle :");
 					double heightOfRectangle = scan.nextDouble();
-					System.out.printf("Area of rectangle = %.2f\n" , (areaOfRectangle(widthOfRectangle, heightOfRectangle)));
+					System.out.printf("Area of rectangle = %.2f cm^2\n" , (areaOfRectangle(widthOfRectangle, heightOfRectangle)));
 					break;
 				}
 			case 3:{
 					System.out.println("Enter side of the square :");
 					double sideOfSquare = scan.nextDouble();
-					System.out.printf("Area of square = %.2f\n" , (areaOfSquare(sideOfSquare)));
+					System.out.printf("Area of square = %.2f cm^2\n" , (areaOfSquare(sideOfSquare)));
 					break;
 				}
 			case 4:{
 					System.out.println("Enter radius of the circle :");
 					double radiusOfCircle = scan.nextDouble();
-					System.out.printf("Area of circle = %.2f\n" , (areaOfCircle(radiusOfCircle)));
+					System.out.printf("Area of circle = %.2f cm^2\n" , (areaOfCircle(radiusOfCircle)));
 					break;
 				}
 			case 5:{
@@ -118,7 +118,7 @@ public class AreaOfDifferentShapes {
 			}
 		}
 		catch (InputMismatchException e){
-			System.out.println("Ïnvalid input");
+			System.out.println(e.getMessage() +" is not a valid input!");
 		}
 		catch(ArithmeticException e){
 			System.out.println("Arithmetic Exception");			
@@ -130,8 +130,16 @@ public class AreaOfDifferentShapes {
 	}
 	
 	public static void main(String args[]) throws NullPointerException, Exception{
-		AreaOfDifferentShapes object = new AreaOfDifferentShapes();
-		object.getUserChoice();
+		try{
+			AreaOfDifferentShapes object = new AreaOfDifferentShapes();
+			object.getUserChoice();
+		}
+		catch (NullPointerException e){
+			System.out.println(e.getMessage() +" is not a valid input!");
+		}
+		catch(ArithmeticException e){
+			System.out.println("Arithmetic Exception");			
+		}
 	}	
 	
 	
