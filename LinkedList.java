@@ -1,3 +1,12 @@
+/*
+ * LinkedList defines the structure of linkedlist consisting of starting node pointer and certain functions :
+ * @insertNode : inserting new node 
+ * @showNodes : display the nodes
+ * @rotateSubList 
+ * @nodeSwap
+ * @loopDetection
+ */
+
 package LinkedList;
 public class LinkedList {
 	
@@ -52,16 +61,24 @@ public class LinkedList {
 	 * @numberOftimes is the number of times the list is to be rotated.
 	 */
 	public void rotateSubList(int leftPointer, int rightPointer, int numberOftimes) throws Exception {
+		if (leftPointer<0){
+			throw new Exception("Invalid start position.");
+		}
 		
+		if (rightPointer<0){
+			throw new Exception ("Invalid end position.");
+		}
+		
+		if (leftPointer>rightPointer){
+			throw new Exception ("Invalid positions.");
+		}
+		
+		if (numberOftimes<0){
+			throw new Exception("Invalid input for number of rotations");
+		}
 		Node tempNode = head;
 		Node previousNode = null;
 		Node startNode = null;
-		
-		int subListSize = rightPointer-leftPointer+1;
-		
-		if (numberOftimes>=subListSize){
-			numberOftimes = numberOftimes%subListSize;
-		}
 		
 		// to find the first node of sublist
 		for (int i=0;i<leftPointer;i++){
@@ -86,20 +103,30 @@ public class LinkedList {
 		}
 		
 		Node endNode = tempNode;
+		int subListSize = rightPointer-leftPointer+1;
 		
+		if (numberOftimes >= subListSize){
+			numberOftimes = numberOftimes%subListSize;
+		}
 	
-		Node node = nodeSwap(leftPointer,subListSize-numberOftimes,startNode);
-			
-		//if sublist starts from first element of list
-		if (previousNode==null){
-			head = node.getNext();
+		if(numberOftimes==0){
+			showNodes();
+			return;
 		}
 		else{
-			previousNode.setNext(node.getNext());
-		}
-		node.setNext(endNode.getNext());
-		endNode.setNext(startNode);
-		showNodes();	
+			Node node = nodeSwap(numberOftimes,startNode);
+				
+			//if sublist starts from first element of list
+			if (previousNode==null){
+				head = node.getNext();
+			}
+			else{
+				previousNode.setNext(node.getNext());
+			}
+			node.setNext(endNode.getNext());
+			endNode.setNext(startNode);
+			showNodes();
+			}
 		}
 			
 	/*
@@ -109,8 +136,8 @@ public class LinkedList {
 	 * @node is the start node of sublist
 	 * @return previous node of the node to be returned
 	 */
-	private Node nodeSwap(int leftPointer, int number, Node node){	
-		for (int i=leftPointer;i<number-1;i++){
+	private Node nodeSwap(int number, Node node){	
+		for (int i=0;i<number-1;i++){
 			node = node.getNext();
 		}
 		return node;
