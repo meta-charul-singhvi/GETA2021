@@ -52,7 +52,7 @@ public class LinkedListRotationMain {
 			//getting starting index of sublist
 			System.out.println("Enter start position (left) >= 0 :");
 			int leftPointer = scan.nextInt();
-			while (leftPointer<0 || leftPointer>sizeOfList){
+			while (leftPointer<0 || leftPointer>sizeOfList-1){
 				System.out.println("Enter valid Start position : ");
 				leftPointer = scan.nextInt();
 			}
@@ -61,7 +61,7 @@ public class LinkedListRotationMain {
 			System.out.println("Enter end position (right) < "+ sizeOfList +":");
 			int rightPointer = scan.nextInt();
 			
-			while (rightPointer<0 || rightPointer>sizeOfList || rightPointer<=leftPointer){
+			while (rightPointer<0 || rightPointer>sizeOfList-1 || rightPointer<leftPointer){
 				System.out.println("Enter valid end position : ");
 				leftPointer = scan.nextInt();
 			}
@@ -80,7 +80,10 @@ public class LinkedListRotationMain {
 				System.out.print("List before rotation : ");
 				linkedList.showNodes();
 				System.out.println("\nList after "+numberOftimes+" rotations from position ("+leftPointer+"-"+rightPointer+"): ");
-				linkedList.rotateSubList(leftPointer, rightPointer, numberOftimes%(rightPointer-leftPointer+1));
+				if(leftPointer == rightPointer)
+					linkedList.showNodes();
+				else
+					linkedList.rotateSubList(leftPointer, rightPointer, numberOftimes);
 			}
 			scan.close();
 		}
