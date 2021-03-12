@@ -43,8 +43,8 @@ Return an array that contains exactly the same numbers as the input array, but r
 Let’s say the value of X is 4 and Y is 5. Then 
 	
 	fixXY([5, 4, 9, 4, 9, 5]) → [9, 4, 5, 4, 5, 9]
-fixXY([1, 4, 1, 5]) → [1, 4, 5, 1]
-fixXY([1, 4, 1, 5, 5, 4, 1]) → [1, 4, 5, 1, 1, 4, 5]
+	fixXY([1, 4, 1, 5]) → [1, 4, 5, 1]
+	fixXY([1, 4, 1, 5, 5, 4, 1]) → [1, 4, 5, 1, 1, 4, 5]
 Assume we are receiving an array of integers along with values of X and Y as a method parameter.
 
 Throw assertion in following cases : 
@@ -64,14 +64,9 @@ splitArray([10, 10]) → 1
 Throw assertion error in case the array is empty.
 
 
-Add-on Exercise
+##### Add-on Exercise
 
 Write Junit test cases for all the previous assignments done so far. 
 Include both positive and negative test cases for each problem using JUnit concepts. 
 Also use the concept of parameterized test cases wherever applicable.
-
-
-
-        
-
 
