@@ -1,17 +1,28 @@
-# GETA2021 Algorithm2
+# GETA2021 Database Management System - Assignments
+## Session 1
+## Introduction to DBMS
 
-### Question1
-Define the interface for an  undirected weighted graph with the following methods:
-  isConnected() - it will return true if the graph is a connected graph. Use depth first search for this purpose. DFS can be implemented using stack.
-  reachable(a) - it will return all the nodes that are reachable from node a
-  mst() - it will return the minimum spanning tree for the graph using the greedy approach
-  shortestPath(a,b) - it will return the shortest path from node a to node b using Dijkstra’s algorithm. 
+### Assignment 1
+There is an Organization (StoreFront) that would like to go online for selling their products. We have the following information to build an application that meets the requirements:
+Application contains many Products.
+Categories will categorised the Products.
+Categories can be nested.
+A Product can fall into multiple Categories.
+A Product can have one or more Images.
+User can be a Shopper or Administrator.
+Shopper can place an order having one or more products.
+Shopper can shop only those products which are in stock.
+Shopper can have multiple Shipping Addresses.
+Independent items in an Order can be shipped, cancelled or returned.
 
-### Question2
-Implement the above interface using the edge list representation.
+Identify the participating entities.
+Identify the relations. 
+Identify the key attributes. 
+Draw the E-R diagram for the problem.
 
-### Question3
-Use Quick Sort algorithm to sort a linked-list of employees in descending order with the following strategy:-
-The employee with the highest salary should be the first in the linked list and the one with the lowest salary should be last.
-In case of a tie, an employee with a smaller age should go first.
-Note - Do NOT use any Java Collections API
+
+### Assignment 2
+Explain Normalization techniques (along with an example) as discussed during Session.
+
+### Assignment 3
+Install and connect to MySQL
