@@ -2,10 +2,10 @@
 
 ### Question1
 Define the interface for an  undirected weighted graph with the following methods:
-isConnected() - it will return true if the graph is a connected graph. Use depth first search for this purpose. DFS can be implemented using stack.
-reachable(a) - it will return all the nodes that are reachable from node a
-mst() - it will return the minimum spanning tree for the graph using the greedy approach
-shortestPath(a,b) - it will return the shortest path from node a to node b using Dijkstra’s algorithm. 
+  isConnected() - it will return true if the graph is a connected graph. Use depth first search for this purpose. DFS can be implemented using stack.
+  reachable(a) - it will return all the nodes that are reachable from node a
+  mst() - it will return the minimum spanning tree for the graph using the greedy approach
+  shortestPath(a,b) - it will return the shortest path from node a to node b using Dijkstra’s algorithm. 
 
 ### Question2
 Implement the above interface using the edge list representation.
