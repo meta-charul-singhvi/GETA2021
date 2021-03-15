@@ -114,7 +114,7 @@ public class LinkedList {
 			return;
 		}
 		else{
-			Node node = nodeSwap(numberOftimes,startNode);
+			Node node = nodeSwap(subListSize-numberOftimes,startNode);
 				
 			//if sublist starts from first element of list
 			if (previousNode==null){
