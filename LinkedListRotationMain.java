@@ -1,6 +1,6 @@
 /*
  * @author - Charul Singhvi
- * @date - 04-03-2021
+ * @date - 15-03-2021
  * 
  */
 package LinkedList;
@@ -61,9 +61,9 @@ public class LinkedListRotationMain {
 			System.out.println("Enter end position (right) < "+ sizeOfList +":");
 			int rightPointer = scan.nextInt();
 			
-			while (rightPointer<0 || rightPointer>sizeOfList-1 || rightPointer<leftPointer){
+			while (rightPointer>sizeOfList-1 || rightPointer<leftPointer){
 				System.out.println("Enter valid end position : ");
-				leftPointer = scan.nextInt();
+				rightPointer = scan.nextInt();
 			}
 			
 			System.out.println("Enter number of times to be rotated : ");
