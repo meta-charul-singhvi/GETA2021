@@ -1,0 +1,185 @@
+Normalization
+  -> Normalization is the process of organizing the data in the database.
+  -> Normalization is used to minimize the redundancy from a relation or set of relations. It is also used to eliminate the undesirable characteristics like Insertion, Update and Deletion Anomalies.
+  -> Normalization divides the larger table into the smaller table and links them using relationship.
+  -> The normal form is used to reduce redundancy from the database table.
+
+Types of Normal Forms
+
+There are the four types of normal forms:
+  1. 1NF
+  2. 2NF
+  3. 3NF
+  4. BCNF(Boyce Codd normal form)
+
+1.First Normal Form (1NF)
+  ->A relation will be 1NF if it contains an atomic value.
+  ->It states that an attribute of a table cannot hold multiple values. It must hold only single-valued attribute.
+  ->First normal form disallows the multi-valued attribute, composite attribute, and their combinations.
+
+Example: Relation EMPLOYEE is not in 1NF because of multi-valued attribute EMP_PHONE.
+
+EMPLOYEE table:
+
+EMP_ID	 EMP_NAME	    EMP_PHONE	                EMP_STATE
+14	      Hobi	      7272826385          	    Rajasthan
+20	      Jin	        8574783832	              Madhya Pradesh
+12	      Jimin	      7390372389,8589830302	    Uttrakhand
+
+The decomposition of the EMPLOYEE table into 1NF has been shown below:
+
+EMP_ID	 EMP_NAME	    EMP_PHONE	                EMP_STATE
+14	      Hobi	      7272826385          	    Rajasthan
+20	      Jin	        8574783832	              Madhya Pradesh
+12	      Jimin	      7390372389          	    Uttrakhand
+12	      Jimin	      8589830302	              Uttrakhand
+
+
+2.Second Normal Form (2NF)
+  ->In the 2NF, relational must be in 1NF.
+  ->In the second normal form, all non-key attributes are fully functional dependent on the primary key
+
+Example: Let's assume, a Boy Band Group can store the data of members and their expertise. A member can be expert in more than one field.
+
+MEMBER table:
+
+MEMBER_ID   EXPERTISE_AREA	   MEMBER_AGE
+  1	        Dancing             22
+  1	        Painting	          22
+  2	        Singing	            28
+  3	        Rapping	            26
+  3	        Cooking	            26
+
+In the given table, non-prime attribute MEMBER_AGE is dependent on MEMBER_ID which is a proper subset of a candidate key. That's why it violates the rule for 2NF.
+
+
+To convert the given table into 2NF, we decompose it into two tables:
+
+MEMBER_DETAIL table:
+
+MEMBER_ID     MEMBER_AGE
+  1	          22
+  2	          28
+  2	          26
+
+EXPERTISE_AREA table:
+
+MEMBER_ID   EXPERTISE_AREA
+  1	        Dancing             
+  1	        Painting	          
+  2	        Singing	            
+  3	        Rapping	            
+  3	        Cooking	 
+
+
+3.Third Normal Form (3NF)
+  ->A relation will be in 3NF if it is in 2NF and not contain any transitive partial dependency.
+  ->3NF is used to reduce the data duplication. It is also used to achieve the data integrity.
+  ->If there is no transitive dependency for non-prime attributes, then the relation must be in third normal form.
+
+A relation is in third normal form if it holds atleast one of the following conditions for every non-trivial function dependency X → Y.
+
+ 1.X is a super key.
+ 2.Y is a prime attribute, i.e., each element of Y is part of some candidate key.
+
+ Example:
+
+ EMPLOYEE_DETAIL table:
+
+ EMP_ID	 EMP_NAME   EMP_ZIP	  EMP_STATE   EMP_CITY
+  12	    Harry	      20101 	  UP	        Canada
+  13	    Fin         02228	    US	        Boston
+  14	    Lan	        60007	    US	        Chicago
+  15	    Col         06389	    UK	        Norwich
+  16	    John	      46207	    MP	        Sweden
+
+Super key in the table above:
+
+{EMP_ID}, {EMP_ID, EMP_NAME}, {EMP_ID, EMP_NAME, EMP_ZIP}....so on  
+
+Candidate key: {EMP_ID}
+
+Non-prime attributes: In the given table, all attributes except EMP_ID are non-prime.
+
+Here, EMP_STATE & EMP_CITY dependent on EMP_ZIP and EMP_ZIP dependent on EMP_ID. The non-prime attributes (EMP_STATE, EMP_CITY) transitively dependent on super key(EMP_ID). It violates the rule of third normal form.
+
+That's why we need to move the EMP_CITY and EMP_STATE to the new <EMPLOYEE_ZIP> table, with EMP_ZIP as a Primary key.
+
+EMPLOYEE table:
+
+EMP_ID	  EMP_NAME     EMP_ZIP	  
+  12	    Harry	      20101 	  
+  13	    Fin         02228	    
+  14	    Lan	        60007	    
+  15	    Col         06389	    
+  16	    John	      46207	    
+
+EMPLOYEE_ZIP table:
+
+EMP_ZIP	  EMP_STATE   EMP_CITY
+20101 	  UP	        Canada
+02228	    US	        Boston
+60007	    US	        Chicago
+06389	    UK	        Norwich
+46207	    MP	        Sweden
+
+
+4.Boyce Codd normal form (BCNF)
+  ->BCNF is the advance version of 3NF. It is stricter than 3NF.
+  ->A table is in BCNF if every functional dependency X → Y, X is the super key of the table.
+  ->For BCNF, the table should be in 3NF, and for every FD, LHS is super key.
+
+Example: Let's assume there is a company where employees work in more than one department.
+
+EMPLOYEE table:
+
+EMP_ID	EMP_COUNTRY	  EMP_DEPT	    DEPT_TYPE    EMP_DEPT_NO
+264	    India	        Designing	    D394	       283
+264	    India	        Testing	      D394	       300
+364	    UK	          Stores	      D283	       232
+364	    UK	          Developing	  D283	       549
+
+In the above table Functional dependencies are as follows:
+
+
+EMP_ID    →  EMP_COUNTRY  
+EMP_DEPT  →   {DEPT_TYPE, EMP_DEPT_NO}  
+Candidate key: {EMP-ID, EMP-DEPT}
+
+The table is not in BCNF because neither EMP_DEPT nor EMP_ID alone are keys.
+
+To convert the given table into BCNF, we decompose it into three tables:
+
+EMP_COUNTRY table:
+
+EMP_ID	EMP_COUNTRY
+264	    India
+364	    UK	
+
+EMP_DEPT table:
+
+EMP_DEPT	  DEPT_TYPE    EMP_DEPT_NO
+Designing	  D394	       283
+Testing	    D394	       300
+Stores	    D283	       232
+Developing	D283	       549
+
+EMP_DEPT_MAPPING table:
+
+EMP_ID	EMP_DEPT
+D394	  283
+D394	  300
+D283	  232
+D283	  549
+
+Functional dependencies:
+
+EMP_ID     →    EMP_COUNTRY  
+EMP_DEPT   →   {DEPT_TYPE, EMP_DEPT_NO}  
+Candidate keys:
+
+For the first table: EMP_ID
+For the second table: EMP_DEPT
+For the third table: {EMP_ID, EMP_DEPT}
+
+Now, this is in BCNF because left side part of both the functional dependencies is a key.
