@@ -15,7 +15,7 @@ public class StringOperations {
 	 * Comparing the characters of 2 strings at a particular index.
 	 */
 	public static int stringCompare(String s1, String s2, int l1, int l2){
-		int flag=0;
+		int flag=1;
 		if(l1==l2){ 
 			for(int i=0;i<l1;i++){
 		        if(s1.charAt(i)!=s2.charAt(i)){
