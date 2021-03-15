@@ -166,7 +166,7 @@ Developing	D283	       549
 
 EMP_DEPT_MAPPING table:
 
-EMP_ID	EMP_DEPT
+EMP_ID	EMP_DEPT_NO
 D394	  283
 D394	  300
 D283	  232
@@ -179,7 +179,7 @@ EMP_DEPT   →   {DEPT_TYPE, EMP_DEPT_NO}
 Candidate keys:
 
 For the first table: EMP_ID
-For the second table: EMP_DEPT
-For the third table: {EMP_ID, EMP_DEPT}
+For the second table: EMP_DEPT_NO
+For the third table: {EMP_ID, EMP_DEPT_NO}
 
 Now, this is in BCNF because left side part of both the functional dependencies is a key.
