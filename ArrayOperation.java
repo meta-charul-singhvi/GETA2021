@@ -30,17 +30,19 @@ public class ArrayOperation {
 		}
 		
 		int sizeOfLargestMirrorSection = 0;
-		for (int i = 0; i < userInputArray.length; i++){
-			int countOfElements = 0;
+		for (int i = 0; i < userInputArray.length ; i++){
 			for (int j = userInputArray.length - 1; j > i; j--){
-				int startPoint = i, endPoint = j;
-				while (startPoint <= j && userInputArray[startPoint] == userInputArray[endPoint]){
-					countOfElements++;
-					startPoint++;
-					endPoint--;
-				}
-				if(countOfElements > 1 && sizeOfLargestMirrorSection < countOfElements){
-					sizeOfLargestMirrorSection = countOfElements;
+				if(userInputArray[i] == userInputArray[j]){
+					int startPoint = i, endPoint = j, countOfElements = 0;
+					while (startPoint <= j && userInputArray[startPoint] == userInputArray[endPoint]){
+						countOfElements++;
+						startPoint++;
+						endPoint--;
+					}
+					if(countOfElements > 1 && sizeOfLargestMirrorSection < countOfElements){
+						sizeOfLargestMirrorSection = countOfElements;
+						countOfElements = 0;
+					}
 				}
 			}
 		}
@@ -183,6 +185,13 @@ public class ArrayOperation {
 		return splitIndex;
 	}
 	
+	public static void displayArray(int[] array, int X, int Y) throws AssertionError, Exception{
+		int[] solvedArray = solveFixXYProblem(array, X, Y);
+		for(int index=0; index<array.length; index++){
+			System.out.print(solvedArray[index] + " ");
+		}
+	}
+	
 	
 	public static void main(String args[])
 	{
@@ -199,10 +208,13 @@ public class ArrayOperation {
 			
 			System.out.println("The largest mirror section count in the array is : "+largestMirrorSection(array));
 			System.out.println("Number of clumps in the array are : "+numberOfClumps(array));
+			System.out.print("Enter X :");
 			int X = scan.nextInt();
+			System.out.print("Enter Y :");
 			int Y = scan.nextInt();
-			System.out.println("The solution of FixXY in array is : "+solveFixXYProblem(array, X, Y));
-			System.out.println("The spliting index in the array is : "+splitArray(array));
+			System.out.println("The solution of FixXY in array is : "); 
+			displayArray(array, X, Y);
+			System.out.println("\nThe sum spliting index in the array is : "+splitArray(array));
 			
 		}
 		catch(AssertionError e){
