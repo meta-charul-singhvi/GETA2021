@@ -1,87 +1,54 @@
-package algorithm2EmployeeSorting;
+package linkedList;
 
-/**
- * Class to represent a Linked List
- *
- */
+import undirectedWeightedGraph.Edge;
+
 public class LinkedList {
 	private Node head;
 
 	/**
-	 * Function to insert node in the linked list
-	 * 
-	 * @param employee is a non-null Employee
-	 * @throws Exception if employee is null
+	 * Default constructor
 	 */
-	public void insert(Employee employee) throws Exception {
-		Node node = new Node(employee);
-		if (this.head == null) {
-			this.head = node;
+	public LinkedList() { }
+	/**
+	 * Function to insert a node at end of the linked list takes integer value
+	 * as parameter
+	 * @param value
+	 */
+	public void insertNode(Edge edge) {
+		Node newNode = new Node(edge);
+		if (head == null) {
+			head = newNode;
 			return;
 		}
-		Node currentNode = this.head;
-		while(currentNode.getNext()!=null) {
-			currentNode  = currentNode.getNext();
+		Node last = head;
+		while (last.getNext() != null) {
+			last = last.getNext();
 		}
-		currentNode.setNext(node);
-		node.setPrev(currentNode);
+		last.setNext(newNode);
 	}
 
 	/**
-	 * Function to sort employees based on salary in descending order and when salary is same sort according to age in ascending order
-	 * 
-	 * @throws Exception if any employee found null
+	 * Function to print the linked list on console
 	 */
-	public void sort() throws Exception {
-		this.quickSort(this.head, null);
-	}
-
-	/**
-	 * Helper function to apply Quick Sort to the Linked List recursively
-	 * @param left points to left Node
-	 * @param right point to right Node
-	 */
-	private void quickSort(Node left, Node right) {
-		
-		//only one element is present
-		if(left == right) {
+	public void display() {
+		if (head == null) {
+			System.out.println("null");
 			return;
 		}
-		
-		Node pivot = left;
-		Employee employee = pivot.getEmployee();
-		for (Node current = left.getNext(); current != right; current = current.getNext()) {
-			Employee currentEmployee = current.getEmployee();
-			if (currentEmployee.getSalary() > employee.getSalary() || (currentEmployee.getSalary() == employee.getSalary() && currentEmployee.getAge() < employee.getAge())) {
-				current.getPrev().setNext(current.getNext());
-				if(current.getNext()!=null) {
-					current.getNext().setPrev(current.getPrev());
-				}
-				current.setPrev(pivot.getPrev());
-				current.setNext(pivot);
-				if(pivot.getPrev()==null) {
-					this.head = current;
-				} else {
-					pivot.getPrev().setNext(current);
-				}
-				pivot.setPrev(current);
-				if(left == pivot) {
-					left = current;
-				}
+
+		for (Node currentNode = head; currentNode != null; currentNode = currentNode
+				.getNext()) {
+			System.out.print(currentNode.getEdge().getSource().getVertex()+"->"+currentNode.getEdge().getDestination().getVertex()+":"+currentNode.getEdge().getWeight());
+			if (currentNode.getNext() != null) {
+				System.out.print(" ---");
+			} else {
+				System.out.println();
 			}
 		}
-		quickSort(left, pivot);
-		quickSort(pivot.getNext(), right);
+	}
+	public Node getHead()
+	{
+		return this.head;
 	}
 
-	/**
-	 * Function to print all the nodes in the linked list
-	 */
-	public void showList(){
-		System.out.println("Employee list : ");
-		System.out.println("----------------------------------------------\nEmployee Name\tSalary\t\tEmployee Age");
-		for (Node currentNode = this.head; currentNode != null; currentNode = currentNode.getNext()) {
-			System.out.println(currentNode.getEmployee().getName() + "\t\t"+currentNode.getEmployee().getSalary() +"\t\t"+currentNode.getEmployee().getAge());
-		}
-	}
 }

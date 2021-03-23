@@ -1,58 +1,47 @@
-package algorithm2EmployeeSorting;
-public class Node {
-	private Employee employee;
-	private Node prev;
-	private Node next;
+package linkedList;
 
+import undirectedWeightedGraph.Edge;
+
+/**
+ * Class to implement a node of a linked list
+ *
+ */
+public class Node {
+	private Edge edge;
+	private Node next;
+	
 	/**
-	 * Constructor to initialize employee
-	 * @param employee is a non-null Employee
-	 * @throws Exception if employee is null
+	 * Constructor takes integer value as parameter
+	 * sets value of the node initially
+	 * @param value
 	 */
-	public Node(Employee employee) throws Exception {
-		if(employee == null) {
-			throw new Exception("Employee can't be null");
-		}
-		this.employee = employee;
+	public Node(Edge edge){
+		this.edge = edge;
+		this.next = null;
 	}
 	
 	/**
-	 * Function to get employee
-	 * @return employee
+	 * Function to get the value of the node
+	 * @return value
 	 */
-	public Employee getEmployee() {
-		return this.employee;
+	public Edge getEdge(){
+		return this.edge;
 	}
 	
 	/**
-	 * Function to get previous node of the linked list
-	 * @return prev
+	 * Function to get the next node
+	 * @return next node
 	 */
-	public Node getPrev() {
-		return this.prev;
-	}
-	
-	/**
-	 * Function to set prev node
-	 * @param node
-	 */
-	public void setPrev(Node node) {
-		this.prev = node;
-	}
-	
-	/**
-	 * Function to get next node of the linked list
-	 * @return next
-	 */
-	public Node getNext() {
+	public Node getNext(){
 		return this.next;
-	}
+	} 
 	
 	/**
 	 * Function to set next node
-	 * @param node
+	 * @param next
 	 */
-	public void setNext(Node node) {
-		this.next = node;
+	public void setNext(Node next){
+		this.next = next;
 	}
+	
 }
