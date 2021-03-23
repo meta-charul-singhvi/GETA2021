@@ -1,238 +1,128 @@
-/*
- * @author - Charul Singhvi
- * @date - 07-03-2021
- * @IntSet is a class which represents a set made up using array. It perfroms functions such as:
- * @isMember checks if an element is a member of particular set
- * @getComplement gets the complement set of the set. Considering universal set as {1-1000}
- * @isSubSet checks if the other set provided is subset of the main set or not.
- * @union results the union of 2 sets
- */
-import java.util.Scanner;
-import java.util.Arrays;
+package set;
 
-public class IntSet {
+import java.util.*;
 
-	private int[] set;
-	private int size;
-	
-	Scanner scan = new Scanner (System.in);
-	/*
-	 * Constructor taking input values of set whenever a new object is created
-	 */
-	private IntSet() throws Exception{
-		try{
-			System.out.print("Enter number of values to be entered in set:");
-			int n = scan.nextInt();
-			while(n<=0){
-				System.out.print("Enter a natural number as total elements in set:");
-				n = scan.nextInt();
-			}
-			int[] arr = new int[n];
-			System.out.println("Enter values in set!");
-			for(int i=0; i<n; i++){
-				System.out.print("Value"+ i +":");
-				arr[i] = scan.nextInt();
-			}
-			arrToSet(arr, n);
-		}
-		catch(Exception e){
-			System.out.print("Invalid Input!");
-			System.exit(0);
-		}
-	}
-	/*
-	 * Constructor taking array as input
-	 */
-	private IntSet(int[] arr){
+public final class IntSet {
+	private final HashSet<Integer> set = new HashSet<Integer>();  // mutable
+	int i;
+	Scanner input = new Scanner(System.in);
+	// constructor to initialize universal set
+	private IntSet(){
 		
-		int n = arr.length;
-		arrToSet(arr, n);
-		
-	}
-	
-	/*
-	 * Converting an array's functionality to set
-	 * Such as : no values repeating in set
-	 */
-	public void arrToSet(int[] arr, int n){
-		Arrays.sort(arr);
-		int j=0;
-		set=new int[n];
-		for (int i=0; i<n-1; i++){
-			if(arr[i]!= arr[i+1]){
-				set[j++] = arr[i];
-			}
+		for(i=1; i<=1000 ;i++){
+			set.add(i);
 		}
-		set[j++]=arr[n-1];
-		size=j;
 	}
-	/*
-	 * show the elements in the set
-	 */
-	public void displaySet(){
-		
-		System.out.print("{ ");
-		for(int i=0; i<size; i++){
-			System.out.print(set[i]+ " ");
+	
+	
+	// constructor to initialize variables when range is given
+	private IntSet(int n){
+		System.out.println("Enter elements of set: ");
+		for(i=0; i<n ;i++){
+			set.add(input.nextInt());
 		}
-		System.out.print("}");
+	}
+	
+	private void getDisplay(){
+		System.out.println("Elements of set: " + set);
+	}
 		
-	}
-	
-	/*
-	 * Checking for an element in set
-	 */
-	public boolean isMember (int x){
-		boolean isMem = false;
-		for(int i=0; i<size; i++){
-			if(x == set[i]){
-				isMem= true; break;
-			}
+	// isMember
+	private boolean isMember(int x){
+		if(set.contains(x)){
+			return true;
 		}
-		return isMem;
-	}
-	
-	/*
-	 * returning the size of the set
-	 */
-	public int size(){
-		return size;
-	}
-	
-	/*
-	 * checking if set provided is subset of the main set
-	 */
-	public boolean isSubSet(int[] s){		
-		if(s.length > set.length){
+		else{
 			return false;
 		}
-		
-		if(s[s.length-1] > set[set.length-1]){
-			return false;
-		}
-		
-		int subsetIndex=0;
-		for(int i=0; i<set.length; i++){
-			if(subsetIndex <= set.length){
-				if(set[i] == s[subsetIndex]){
-					subsetIndex++;
-				}
-				else if(s[subsetIndex] > set[i]){}
-				else{
-					return false;
-				}
+	}
+	//isSubset
+	private boolean isSubSet(IntSet s){
+		for( int ele : s.set){
+			if(!set.contains(ele)){
+				return false;
 			}
 		}
-		
 		return true;
 	}
 	
-	/*
-	 * returning the complement of main set
-	 * Considering universal set {0-1000}
-	 */
-	public IntSet getComplement(){
-		final int upperLimit = 1000;
-		int[] compSet= new int[upperLimit-set.length+1];
-		
-		int compSetIndex=0, setIndexCount=0;
-		for(int i=1; i<=upperLimit; i++){
-			if(setIndexCount < set.length){
-				if(isMember(i)){
-					setIndexCount++;
-				}
-				else{
-					compSet[compSetIndex]=i;
-					compSetIndex++;
-				}
-			}
-			else{
-				compSet[compSetIndex]=i;
-				compSetIndex++;
+	private HashSet<Integer> getComplement(){
+		HashSet<Integer> complementSet = new HashSet<Integer>();
+		for(i=1; i<1000 ; i++){
+			if(!isMember(i)){
+				complementSet.add(i);
 			}
 		}
-		
-		IntSet complSet = new IntSet(compSet);
-		return complSet;
+		return complementSet;
 	}
 	
-	/*
-	 * Returning the union of 2 sets provided
-	 */
-	public IntSet union(int[] set1 ,int[] set2){
-		int[] set3 = new int[set1.length + set2.length];
-		int i=0;
-		for(i=0; i<set1.length;i++){
-			set3[i] = set1[i];
-		}
-		for(int j=0; j<set2.length; j++)
-			set3[j+i] = set2[j];
-		IntSet setUn = new IntSet(set3);
-		return setUn;
+	// union of two sets
+	private HashSet<Integer> getUnion(IntSet s){
+		HashSet<Integer> unionSet = new HashSet<Integer>();
+		unionSet.addAll(set);
+		unionSet.addAll(s.set);
+		return unionSet;
 	}
+
 	
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) {
 		try{
-			Scanner in = new Scanner(System.in);
-			IntSet s1 = new IntSet();
-			s1.displaySet();
-			
-			/*
-			 * IsMember check
-			 */
-			System.out.print("\nEnter number to check if it's member of Set :");
-			int x = in.nextInt();
-			boolean checkMem = s1.isMember(x);
-			System.out.println("1. Is '" +x +"' a member of set : "+checkMem);
-			
-			/*
-			 * Printing size of set
-			 */
-			System.out.println("\n2. Size of the Set is :"+s1.size()+"\n");
-			
-			/*
-			 * Printing complement of set
-			 */
-			System.out.print("3. Complement of ");
-			s1.displaySet();
-			System.out.print(" is :\n");
-			IntSet s4 = s1.getComplement();
-			s4.displaySet();
-			System.out.println();
-			
-			/*
-			 * Subset check
-			 */
-			System.out.println("\nEnter set to check if it's the Subset of Main set->");
-			IntSet s2 = new IntSet();
-			System.out.print("4. ");
-			s2.displaySet();
-			System.out.print(" is subset of ");
-			s1.displaySet();
-			if(s2.size() > s1.size()){
-				System.out.println(": false\n");
+			Scanner input = new Scanner(System.in);
+			// enter first set
+			System.out.print("Enter number of elements (range b/w 1-1000) for Main set :");
+			int sixeOfMainSet = input.nextInt();
+			while(sixeOfMainSet<=0){
+				System.out.print("Please enter valid number of elements (range b/w 1-1000) for Main set :");
+				sixeOfMainSet = input.nextInt();
 			}
-			System.out.println(": " + s1.isSubSet(s2.set)+"\n");
+			IntSet set1 = new IntSet(sixeOfMainSet);
+			
+			//enter second set
+			System.out.print("Enter number of elements (range b/w 1-1000) for Sub Set:");
+			int sixeOfSubSet = input.nextInt();
+			while(sixeOfSubSet<=0){
+				System.out.print("Please enter valid number of elements (range b/w 1-1000) for sub set :");
+				sixeOfSubSet = input.nextInt();
+			}
+			IntSet set2 = new IntSet(sixeOfSubSet);
+			
+			set1.getDisplay();
+			set2.getDisplay();
+			// calling various operations on set
+			/*
+			 * input for isMember method
+			 */
+			System.out.print("1. Enter a number to check if it is a member of the Main Set: ");
+			int ele = input.nextInt();
+			// check if element is part of set
+			System.out.println("Result: "+set1.isMember(ele));
 			
 			/*
-			 * Printing union of sets provided
+			 * isSubset(IntSet s)
 			 */
-			System.out.println("Enter a set for union ->");
-			IntSet s3 = new IntSet();
-			System.out.print("\nSet1 is :");
-			s1.displaySet();
-			System.out.print("\nSet2 is :");
-			s3.displaySet();
-			IntSet unionSet = s1.union(s1.set, s3.set);
-			System.out.print("\n5. Union Set is :");
-			unionSet.displaySet();
+			System.out.println("2. Check if second set is subset of first: ");
+			System.out.println("Result: "+set1.isSubSet(set2));
+			// get complement
+			System.out.print("3. Get complement of a set ");
+			System.out.println("Result: "+ set1.getComplement());
+			// get complement
+			System.out.print("4. Get union of two sets ");
+			System.out.println("Result: "+ set1.getUnion(set2));
 			
-			in.close();
+			input.close();
+		
+		}
+		catch(InputMismatchException e){
+			System.out.print("Input should be an integer value!");
+			System.exit(0);
+		}
+		catch(NullPointerException e){
+			System.out.print("Please enter some input! It should be an integer value!");
+			System.exit(0);
 		}
 		catch(Exception e){
-			System.out.print("Invalid Input!");
+			System.out.print("Invalid Input! "+e.getMessage());
 			System.exit(0);
 		}
 	}
-
 }
