@@ -19,49 +19,55 @@
     <body>
         <div class="container">
             <!--Header section-->
-            <header class="d-flex justify-content-between align-items-center p-2 border-bottom">
-                <a href="" class="text-muted">Subscribe</a>
-                <h1><a href="" class="text-dark font-weight-bold h1">Large</a></h1>
-                <div>
-                    <i class="fas fa-search p-2"></i>
-                    <button class="btn btn-outline-secondary">Sign up</button>
+            <header class="blog-header py-3">
+                <div class="row flex-nowrap justify-content-between align-items-center">
+                    <div class="col-4 text-dark">
+                        <a href=""  class="text-muted">Subscribe</a>
+                    </div>
+                    <div class="col-4 text-center">
+                        <a href="" class="text-dark font-weight-bold h1">Large</a>
+                    </div>
+                    <div class="col-4 text-right">
+                        <i class="fas fa-search"></i>
+                        <button class="btn btn-sm btn-outline-secondary">Sign up</button>
+                    </div>
                 </div>
             </header>
 
             <!--Navigation bar-->
-            <nav class="navbar">
-                <a href="#" class="text-muted">World</a>
-                <a href="#" class="text-muted">U.S.</a>
-                <a href="#" class="text-muted">Technology</a>
-                <a href="#" class="text-muted">Design</a>
-                <a href="#" class="text-muted">Culture</a>                    
-                <a href="#" class="text-muted">Business</a>
-                <a href="#" class="text-muted">Politics</a>
-                <a href="#" class="text-muted">Opinion</a>
-                <a href="#" class="text-muted">Sceince</a>
-                <a href="#" class="text-muted">Health</a>
-                <a href="#" class="text-muted">Style</a>
-                <a href="#" class="text-muted">Travel</a>
-            </nav>
+            <div class="nav-scroller py-1 mb-2">
+                <nav class="nav d-flex justify-content-between">
+                    <a href="#" class="text-muted">World</a>
+                    <a href="#" class="text-muted">U.S.</a>
+                    <a href="#" class="text-muted">Technology</a>
+                    <a href="#" class="text-muted">Design</a>
+                    <a href="#" class="text-muted">Culture</a>                    
+                    <a href="#" class="text-muted">Business</a>
+                    <a href="#" class="text-muted">Politics</a>
+                    <a href="#" class="text-muted">Opinion</a>
+                    <a href="#" class="text-muted">Sceince</a>
+                    <a href="#" class="text-muted">Health</a>
+                    <a href="#" class="text-muted">Style</a>
+                    <a href="#" class="text-muted">Travel</a>
+                </nav>
+            </div>
 
             <!--Banner below the naivagtion bar-->
-            <div class="jumbotron mt-2 bg-dark text-white p-5">
-                <div class="row pl-2">
-                    <div class="col-6">
-                        <h1 class="display-4 font-italic">
-                            Title of a longer featured blog post
-                        </h1>
-                        <p class="lead text-white"> 
-                            Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.
-                        </p>
-                        <a href="#" class="lead text-white font-weight-bold">Continue reading...</a>
-                    </div>
+            <div class="jumbotron mt-2 bg-dark text-white p-md-5">
+                <div class="col-md-6">
+                    <h1 class="display-4 font-italic text-responsive">
+                        Title of a longer featured blog post
+                    </h1>
+                    <p class="lead text-white"> 
+                        Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.
+                    </p>
+                    <a href="#" class="lead text-white font-weight-bold">Continue reading...</a>
                 </div>
             </div>
 
             <!--Cards-->
             <div class="row">
-                <div class="col-6">
+                <div class="col-lg-6 col-12 mb-4">
                     <!--First card-->
                     <div class="card d-flex flex-row">
                         <div class="card-body">
@@ -71,13 +77,13 @@
                             <p>This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                             <a href="#">Continue reading</a>
                         </div>
-                        <div> 
+                        <div class="d-none d-xl-block text-white"> 
                             <img class="card-img-right width" src="thumbnail.svg">
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <!--second card-->
+                <div class="col-lg-6 col-12">
+                    <!--Second card-->
                     <div class="card d-flex flex-row">
                         <div class="card-body">
                             <p class="font-weight-bold text-success">Design</p>
@@ -86,7 +92,7 @@
                             <p>This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                             <a href="#" class="card-link ">Continue reading</a>
                         </div>
-                        <div> 
+                        <div class="d-none d-xl-block"> 
                             <img class="card-img-right width" src="thumbnail.svg">
                         </div>
                     </div>
@@ -95,83 +101,83 @@
             </div>
 
             <div class="row pt-4">
-                <div class="col-8">
+                <div class="col-lg-8 col-12">
                     <h3 class="border-bottom font-italic font-weight-bold pb-3">From the Firehouse</h3>
 
-                <!--First blog post Contents-->    
-                <div class="border-bottom pt-1 pb-1 mt-3">
+                    <!--First blog post Contents-->    
+                    <div class="border-bottom pt-1 pb-1 mt-3">
 
-                    <!--Blog heading-->
-                    <h1 class="font-weight-bold">Sample Blog Post</h1>
-                    <p class="text-muted">January 1, 2014 by <a href="#">Mark</a></p>
-                    <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
-                </div>
+                        <!--Blog heading-->
+                        <h1 class="font-weight-bold">Sample Blog Post</h1>
+                        <p class="text-muted">January 1, 2014 by <a href="#">Mark</a></p>
+                        <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+                    </div>
 
-                <div class="pt-3 pb-3">
-                    <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                    <blockquote>
-                      <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    </blockquote>
-                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                    <h2 class="font-weight-bold">Heading</h2>
-                    <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    <h3 class="font-weight-bold">Sub-heading</h3>
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    <pre><code>Example code block</code></pre>
-                    <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-                    <h3 class="font-weight-bold">Sub-heading</h3>
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <ul>
-                      <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-                      <li>Donec id elit non mi porta gravida at eget metus.</li>
-                      <li>Nulla vitae elit libero, a pharetra augue.</li>
-                    </ul>
-                    <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-                    <ol>
-                      <li>Vestibulum id ligula porta felis euismod semper.</li>
-                      <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                      <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
-                    </ol>
-                    <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-                  </div>
-        
-                  <!--Second blog post contents-->
-                  <div class="pt-4 mt-2">
-                    <!--Blog heading-->
-                    <h1 class="font-weight-bold">Another blog post</h2>
-                    <p class="text-muted">December 23, 2013 by <a href="#">Jacob</a></p>
-                    <p class="pt-3">Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                    <blockquote>
-                      <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    </blockquote>
-                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                    <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                  </div>
-        
-                  <div class="pt-5 mt-2">
-                    <h1 class="font-weight-bold">New feature</h2>
-                    <p class="text-muted">December 14, 2013 by <a href="#">Chris</a></p>
-        
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <ul>
-                      <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-                      <li>Donec id elit non mi porta gravida at eget metus.</li>
-                      <li>Nulla vitae elit libero, a pharetra augue.</li>
-                    </ul>
-                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                    <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-                </div>
+                    <div class="pt-3 pb-3">
+                        <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+                        <blockquote>
+                        <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        </blockquote>
+                        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                        <h2 class="font-weight-bold">Heading</h2>
+                        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                        <h3 class="font-weight-bold">Sub-heading</h3>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                        <pre><code>Example code block</code></pre>
+                        <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+                        <h3 class="font-weight-bold">Sub-heading</h3>
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                        <ul>
+                        <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+                        <li>Donec id elit non mi porta gravida at eget metus.</li>
+                        <li>Nulla vitae elit libero, a pharetra augue.</li>
+                        </ul>
+                        <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+                        <ol>
+                        <li>Vestibulum id ligula porta felis euismod semper.</li>
+                        <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+                        <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
+                        </ol>
+                        <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+                    </div>
+            
+                    <!--Second blog post contents-->
+                    <div class="pt-4 mt-2">
+                        <!--Blog heading-->
+                        <h1 class="font-weight-bold">Another blog post</h2>
+                        <p class="text-muted">December 23, 2013 by <a href="#">Jacob</a></p>
+                        <p class="pt-3">Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+                        <blockquote>
+                        <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        </blockquote>
+                        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                    </div>
+            
+                    <div class="pt-5 mt-2">
+                        <h1 class="font-weight-bold">New feature</h2>
+                        <p class="text-muted">December 14, 2013 by <a href="#">Chris</a></p>
+            
+                        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                        <ul>
+                        <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+                        <li>Donec id elit non mi porta gravida at eget metus.</li>
+                        <li>Nulla vitae elit libero, a pharetra augue.</li>
+                        </ul>
+                        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                        <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+                    </div>
 
-                <div class="mt-4 pt-4 pb-4 mb-3 ">
-                    <button class="btn badge-pill text-primary border border-primary">Older</button>
-                    <button class="btn badge-pill text-muted border border-muted">Newer</button>
-                </div>
+                    <div class="mt-4 pt-4 pb-4 mb-3">
+                        <button class="btn badge-pill text-primary border border-primary">Older</button>
+                        <button class="btn badge-pill text-muted border border-muted">Newer</button>
+                    </div>
 
                 
                 </div>
 
                 <!--Aside section-->
-                <aside class="col-4">
+                <aside class="col-lg-4 col-12">
                     <div class="jumbotron p-4 bg-light">
                         <h4 class="font-italic">About</h4>
                         <p>Etiam porta <span class="font-italic">sem malesuada magna </span> euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
