@@ -44,7 +44,7 @@ public class UniqueCharacterMain {
 				System.out.print("Enter a string : ");
 				String inputStr = scan.next();
 				UniqueCharacter character = new UniqueCharacter(inputStr);
-				System.out.println("Unique number of characters in "+inputStr+" are : "+character.countUniqueCharacters());
+				System.out.println("Unique number of characters in '"+inputStr+"' are : "+character.countUniqueCharacters());
 			}
 			System.out.println("------The End!------");
 			scan.close();
