@@ -51,13 +51,13 @@ public class CricketMain {
 			//loop to get bowler details
 			int quota;
 			for (int iterator =0; iterator<numberOfBowlers;iterator++){
-				System.out.println("Enter name of bowler "+iterator+": ");
+				System.out.println("Enter name of bowler "+(iterator+1) +": ");
 				String name = scan.next();
-				System.out.println("Enter quota for bowler "+iterator+": ");
+				System.out.println("Enter quota for bowler "+ (iterator+1) +": ");
 				quota = scan.nextInt();
 				//validating number of deliveriews of bowler
 				while(quota<=0){
-					System.out.println("Please enter valid quota : ");
+					System.out.println("Please enter valid quota for bowler "+ (iterator+1) +": ");
 					quota = scan.nextInt();
 				}
 				//adding bowler to queue

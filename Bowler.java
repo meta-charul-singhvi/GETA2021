@@ -12,7 +12,6 @@ public class Bowler {
 		if (numberOfDeliveries <= 0) {
 			throw new Exception("Deliveries should be greater than 0");
 		}
-		
 		this.nameOfBowler = nameOfBowler;
 		this.numberOfDeliveries = numberOfDeliveries;
 	}

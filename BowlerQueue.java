@@ -45,6 +45,7 @@ public class BowlerQueue implements BowlerQueueInterface{
 		
 	}
 
+
 	/*
 	 * function to rearrange elements after enqueue
 	 * @currentElementPosition is the position of latest element entered
