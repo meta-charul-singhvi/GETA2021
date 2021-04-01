@@ -25,8 +25,9 @@ public class EmployeeCollection {
 		}
 
 		// function to check for uniqueness of employee id
-		if (isUnique(employee.getId())) {
+		if (isUniqueId(employee.getId())) {
 			employeeList.add(employee);
+			System.out.print("Employee added successfully!");
 		} else {
 			throw new Exception("ID is not unique");
 		}
@@ -37,8 +38,7 @@ public class EmployeeCollection {
 	 * @id is the employee id
 	 * returns true if id is unique, false otherwise
 	 */
-	
-	private Boolean isUnique(int id) {
+	private Boolean isUniqueId(int id) {
 		for (Employee iterator : employeeList) {
 			if (iterator.getId() == id) {
 				return false;
@@ -77,7 +77,7 @@ public class EmployeeCollection {
 		for (int i = 0; i < sortedList.size(); i++) {
 			
 		    for (int j = sortedList.size() - 1; j > i; j--) {
-		    	if (sortedList.get(i).getEmployeeName().charAt(0) > sortedList.get(j).getEmployeeName().charAt(0)) {
+		    	if (sortedList.get(i).getEmployeeName().toUpperCase().charAt(0) > sortedList.get(j).getEmployeeName().toUpperCase().charAt(0)) {
 		        	
 		    		sortedList = sort(sortedList.get(i), sortedList.get(j), sortedList, i, j);
         			
@@ -113,6 +113,21 @@ public class EmployeeCollection {
 		sortedList.get(j).setEmployeeName(tempName);
 		sortedList.get(j).setEmployeeAddress(tempAddress);
 		return sortedList;
+	}
+	
+	public boolean checkIfEmpIdExistsAlready(int empId){
+		for(Employee employee : employeeList){
+			if(employee.getId() == empId)
+				return false;
+		}
+		return true;
+	}
+	
+	public void displayUnsortedEmployeeList(){
+		System.out.println("--------Unsorted Employee List--------\n");
+		System.out.println("\tId\tName");
+		for (Employee employee : employeeList) 
+			System.out.println("\t"+employee.getId()+"\t"+employee.getEmployeeName());
 	}
 
 
