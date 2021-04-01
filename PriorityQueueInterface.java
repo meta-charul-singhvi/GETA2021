@@ -13,4 +13,5 @@ public interface PriorityQueueInterface {
 	//function to check if queue is full
 	Boolean isFull();
 
+	void displayQueue();
 }

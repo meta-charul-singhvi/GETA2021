@@ -33,7 +33,7 @@ public class PriorityQueueMain {
 		PriorityQueueInterface priorityqueue = new PriorityQueue((int)sizeOfQueue);
 		try {
 			while (true){
-				System.out.println("Enter 1 to enqueue\n\t2 to dequeue");
+				System.out.println("\nEnter 1 to enqueue\nEnter 2 to dequeue\nEnter 3 to show Priority Queue");
 				int choice = scan.nextInt();
 				if (choice==1){
 					System.out.println("Enter Element to be pushed");
@@ -43,8 +43,11 @@ public class PriorityQueueMain {
 				else if (choice==2){
 					priorityqueue.deQueue();
 				}
+				else if (choice ==3){
+					priorityqueue.displayQueue();
+				}
 				else{
-					throw new Exception (choice+" is an invalid choice! Pleaes enter either 1 or 2!");
+					throw new Exception (choice+" is an invalid choice!");
 				}
 			}
 		}

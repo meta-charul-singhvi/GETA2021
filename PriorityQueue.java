@@ -131,4 +131,14 @@ public class PriorityQueue implements PriorityQueueInterface{
 		return false;
 	}
 	
+	/*
+	 * function to display priority queue
+	 */
+	@Override
+	public void displayQueue(){
+		System.out.print("The queue is : ");
+		for(int index=0; index<priorityQueue.length; index++){
+			System.out.print(priorityQueue[index]+" ");
+		}
+	}
 }
