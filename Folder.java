@@ -156,6 +156,7 @@ public class Folder {
 			if (foundFolder != null) {
 				System.out.println(foundFolder.getPath());
 			}
+			
 			for (Folder folder : this.children.values()) {
 				folder.findFolderRecursively(name);
 			}
