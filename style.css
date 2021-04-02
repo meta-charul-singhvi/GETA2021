@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Calibri;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav_container{
+    display: flex;
+    background-color: rgba(0,0,0,.87);
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.nav_tab{
+    display: inline-block;
+    padding: 10px 30px;
+    color: white;
+    text-decoration: none;
+    font-family: Calibri ;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #cccaca;
+}
+
+.page_header {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    background: url(https://signcovers.com/wp-content/uploads/2019/09/parking-signs-header-background.jpg);
+    width: 100%;
+    height: 300px;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+
+.page_header>h1{
+    color: white;
+    font-family: fantasy;
+    font-size: 50px;
+    align-content: center;
+}
+
+.formElement{
+    display: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.formdiv{
+    background-color: #cccaca;
+}
+
+#message_field{
+    background-color: #cccaca;
+    
+}
+
+#messageField{
+    font-family: fantasy;
+    color: rgba(0,0,0,.87);
+    font-size: medium;
+}
+
+#passValue{
+    color: rgba(0,0,0,.87);
+    font-family: fantasy;
+    font-size: 20px;
+}
+
+#page_footer{
+    display: none;
+    align-items: center;
+    justify-content:center;
+    padding: 40%;
+}
