@@ -1,0 +1,51 @@
+Microsoft Windows [Version 10.0.19042.867]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\charul.singhvi_metac\workspace\UI\Assignment8>node filename.js
+Hello World!
+
+C:\Users\charul.singhvi_metac\workspace\UI\Assignment8>npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (assignment8) server-package
+version: (1.0.0) 1.0.0
+description:
+entry point: (filename.js)
+test command:
+git repository:
+keywords:
+author: Charul Singhvi
+license: (ISC)
+About to write to C:\Users\charul.singhvi_metac\workspace\UI\Assignment8\package.json:
+
+{
+  "name": "server-package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "filename.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Charul Singhvi",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes) yes
+
+C:\Users\charul.singhvi_metac\workspace\UI\Assignment8>npm i
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN server-package@1.0.0 No description
+npm WARN server-package@1.0.0 No repository field.
+
+up to date in 0.572s
+found 0 vulnerabilities
