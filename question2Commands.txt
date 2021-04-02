@@ -1,0 +1,30 @@
+C:\Users\charul.singhvi_metac>npm i
+npm WARN saveError ENOENT: no such file or directory, open 'C:\Users\charul.singhvi_metac\package.json'
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN enoent ENOENT: no such file or directory, open 'C:\Users\charul.singhvi_metac\package.json'
+npm WARN charul.singhvi_metac No description
+npm WARN charul.singhvi_metac No repository field.
+npm WARN charul.singhvi_metac No README data
+npm WARN charul.singhvi_metac No license field.
+
+up to date in 0.713s
+found 0 vulnerabilities
+
+
+C:\Users\charul.singhvi_metac>npm -v
+6.14.11
+
+C:\Users\charul.singhvi_metac>npm install moment --save
+npm WARN saveError ENOENT: no such file or directory, open 'C:\Users\charul.singhvi_metac\package.json'
+npm WARN enoent ENOENT: no such file or directory, open 'C:\Users\charul.singhvi_metac\package.json'
+npm WARN charul.singhvi_metac No description
+npm WARN charul.singhvi_metac No repository field.
+npm WARN charul.singhvi_metac No README data
+npm WARN charul.singhvi_metac No license field.
+
++ moment@2.29.1
+added 1 package from 6 contributors and audited 1 package in 1.162s
+found 0 vulnerabilities
+
+C:\Users\charul.singhvi_metac>npm moment -v
+6.14.11
