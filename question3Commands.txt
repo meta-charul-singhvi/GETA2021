@@ -1,0 +1,22 @@
+Your environment has been set up for using Node.js 14.16.0 (x64) and npm.
+
+C:\Users\charul.singhvi_metac>npm -v
+6.14.11
+
+C:\Users\charul.singhvi_metac>npm i -g nodemon
+C:\Users\charul.singhvi_metac\AppData\Roaming\npm\nodemon -> C:\Users\charul.singhvi_metac\AppData\Roaming\npm\node_modules\nodemon\bin\nodemon.js
+
+> nodemon@2.0.7 postinstall C:\Users\charul.singhvi_metac\AppData\Roaming\npm\node_modules\nodemon
+> node bin/postinstall || exit 0
+
+Love nodemon? You can now support the project via the open collective:
+ > https://opencollective.com/nodemon/donate
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@~2.3.1 (node_modules\nodemon\node_modules\chokidar\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ nodemon@2.0.7
+added 119 packages from 53 contributors in 13.281s
+
+C:\Users\charul.singhvi_metac>npm nodemon -v
+6.14.11
