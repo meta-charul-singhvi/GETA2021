@@ -6,20 +6,46 @@ function.
 */
 
 -- 1.
-SELECT year(createdAt) as 'Year of Order', month(createdAt) as 'Month of Order', COUNT(month(createdAt)) 
-as 'Order count / Month' FROM `order`
-GROUP BY month(createdAt);
+DELIMITER $$
+CREATE FUNCTION getOrdersCountPerMonth(
+    month INT,
+    year INT
+) 
+RETURNS INT
+DETERMINISTIC
+
+BEGIN
+    DECLARE numberOfOrders INT;
+    SET numberOfOrders = (SELECT COUNT(id) FROM `order` WHERE Month(createdAt)=month AND 
+    Year(createdAt)=year);
+    RETURN numberOfOrders;
+END $$
+
+DELIMITER ;
+
+SELECT getOrdersCountPerMonth(03,2021) as 'Order Count';
+
 
 -- 2.
-CREATE FUNCTION maximum_orders_per_month (
-@year1 int =2021)
-RETURNS int AS
+DELIMITER $$
+
+CREATE FUNCTION getMaximumOrderMonth(year INT)
+    RETURNS VARCHAR(10)
+    DETERMINISTIC
+
 BEGIN
-    DECLARE @month int;
-    SELECT @month = month(createdAt), createdAt
+    DECLARE monthOfMaximumOrders VARCHAR(10);
+    SET monthOfMaximumOrders =  ( SELECT MONTHNAME(createdAt)
     FROM `order`
+    WHERE YEAR(createdAt) = year 
     GROUP BY month(createdAt)
-    HAVING year(createdAt) = year1 
-    ORDER BY COUNT(month(createdAt)) DESC LIMIT 1;
-    RETURN @month;
-END;
+    ORDER BY COUNT(month(createdAt)) DESC LIMIT 1);
+                
+    RETURN monthOfMaximumOrders;
+END $$
+
+DELIMITER ;
+
+SELECT getMaximumOrderMonth(2021);
+
+
