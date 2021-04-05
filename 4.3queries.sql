@@ -5,7 +5,7 @@ Assignment 3:
 The columns that require indexing in 
 
 Order Table are:
-    Id and userId as they are feequently used to access dataproduct
+    Id, createdAt and userId as they are frequently used to access dataproduct
 
 Product Table :
     Id, category_id, title are the columns require indexing
@@ -14,7 +14,9 @@ Category Table:
     Id, parentCategoryTitle are the columns that require indexing
 */
 
-CREATE INDEX order_index ON `order` (id , userId);
+CREATE INDEX order_index ON `order` (id , userId, createdAt);
+Show Index from `order`;
+-- DROP INDEX order_index ON `order`;
 
 CREATE INDEX product_index ON product (id , category_id, title);
 
