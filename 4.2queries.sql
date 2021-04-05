@@ -9,27 +9,37 @@ end date. If start date is greater than end date take first date of month as sta
 
 -- 1.
 DELIMITER //
-CREATE PROCEDURE salesPerMonth ()
+CREATE PROCEDURE salesPerMonth (IN month INT,IN year INT)
 BEGIN
-SELECT AVG(price) as 'Average Price',quantity,month(createdAt) as 'Month',Count(*) as'Product count' FROM order_item 
-WHERE month(createdAt)=3 AND year(createdAt)=2021;
+SELECT monthname(createdAt) as 'Month',AVG(price) as 'Average Price',quantity,Count(*) as'Product count' 
+FROM order_item 
+WHERE month(createdAt)=month AND year(createdAt)=year;
 END //
 DELIMITER ;
 
-call salesPerMonth();
+call salesPerMonth(3,2021);
 
 -- 2.
 DELIMITER //
-CREATE PROCEDURE ordersPerPeriod (@startDate varchar(10), @endDate varchar(10))
+CREATE PROCEDURE ordersPerPeriod (IN start_date date, IN end_date date)
 BEGIN
-IF EXISTS(@startDate < @endDate)
-    SELECT * from `order` WHERE createdAt>=@startDate AND createdAt<@endDate;
-ELSE
-    SELECT * from order_item WHERE createdAt>=(
-    select CAST(CAST(YEAR(@startDate) AS VARCHAR(4)) 
-    + '/' + CAST(MONTH(@startDate) AS VARCHAR(2)) + '/01' AS DATETIME)
-    ) AND createdAt<@endDate ;
+
+    SET start_date = IF(start_date < end_date, start_date, DATE_SUB(start_date, INTERVAL DAY(start_date)-1 DAY));
+
+    SELECT o.id as 'Order Id', o.userId, o.createdAt as 'Order Date', o.total as 'Order Amount',
+    CONCAT(s.line1,',',s.line2,',',s.city,',',s.province,',',s.country) AS Shipping_Address,
+    os.status 
+    from `order` o
+    JOIN shipping_address s
+    ON s.id = o.addressId
+    JOIN order_status os
+    ON o.status = os.id
+    WHERE createdAt BETWEEN start_date AND end_date;
+
 END //
 DELIMITER ;
 
+-- calling procedure with correct input data
 call ordersPerPeriod('2021-03-01', '2021-04-01');
+-- calling procedure with where start date is less then end date
+call ordersPerPeriod('2021-03-15', '2021-03-10');
